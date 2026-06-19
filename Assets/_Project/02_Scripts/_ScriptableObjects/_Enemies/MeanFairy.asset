@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: MeanFairy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Mean Fairy
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 8969623715672447508, guid: 4bf292c1f70c645c8a84ee6aa68eee67, type: 3}
   maxHealth: 20
   damageAmount: 1
   moveSpeed: 2
-  spawnDelay: 3
-  maxActiveOfType: 3
   movementType: 0
-  spawnPattern: 1
-  spawnCoordinate: 2
