@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed49bdc16123ef8448800418670c360d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  bulletSpeed: 4.5
+  bulletSpeed: 9
   lifetime: 4
 --- !u!61 &7926918093062908472
 BoxCollider2D:
