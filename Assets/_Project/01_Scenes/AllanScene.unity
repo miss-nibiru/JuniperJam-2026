@@ -631,6 +631,7 @@ GameObject:
   - component: {fileID: 2081915354}
   - component: {fileID: 2081915355}
   - component: {fileID: 2081915356}
+  - component: {fileID: 2081915357}
   m_Layer: 0
   m_Name: Player_Root
   m_TagString: Untagged
@@ -661,7 +662,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081915353}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0246d202feb81c4295baaa5d3080473, type: 3}
   m_Name: 
@@ -698,8 +699,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2081915355}
-        m_TargetAssemblyTypeName: Shotgun, Assembly-CSharp
+      - m_Target: {fileID: 2081915357}
+        m_TargetAssemblyTypeName: MachineGun, Assembly-CSharp
         m_MethodName: OnShoot
         m_Mode: 0
         m_Arguments:
@@ -717,6 +718,21 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2081915357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081915353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5925106fa557446a72ae0185cdc67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MachineGun
+  numberOfBulletsPerShot: 1
+  shootDelay: 0.05
+  bulletPrefab: {fileID: 343697670031656285, guid: 3219512b953b0524a82ce105d35614cc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
