@@ -629,9 +629,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2081915354}
-  - component: {fileID: 2081915355}
   - component: {fileID: 2081915356}
+  - component: {fileID: 2081915358}
+  - component: {fileID: 2081915355}
   - component: {fileID: 2081915357}
+  - component: {fileID: 2081915359}
   m_Layer: 0
   m_Name: Player_Root
   m_TagString: Untagged
@@ -662,7 +664,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081915353}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0246d202feb81c4295baaa5d3080473, type: 3}
   m_Name: 
@@ -699,8 +701,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2081915357}
-        m_TargetAssemblyTypeName: MachineGun, Assembly-CSharp
+      - m_Target: {fileID: 2081915358}
+        m_TargetAssemblyTypeName: GunManager, Assembly-CSharp
         m_MethodName: OnShoot
         m_Mode: 0
         m_Arguments:
@@ -733,6 +735,37 @@ MonoBehaviour:
   numberOfBulletsPerShot: 1
   shootDelay: 0.05
   bulletPrefab: {fileID: 343697670031656285, guid: 3219512b953b0524a82ce105d35614cc, type: 3}
+--- !u!114 &2081915358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081915353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a795d258676f5504aad80877c156fd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunManager
+  shotgun: {fileID: 2081915355}
+  machineGun: {fileID: 2081915357}
+  singleShotShotgun: {fileID: 2081915359}
+  currentWeapon: 0
+--- !u!114 &2081915359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081915353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a9d960898c3bb48b5989437b2d1104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleShotShotgun
+  numberOfBulletsPerShot: 1
+  shootDelay: 0.2
+  bulletPrefab: {fileID: 343697670031656285, guid: a143891f76b6f6544a574f25161dec3a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

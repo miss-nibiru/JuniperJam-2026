@@ -5,8 +5,9 @@ using System.Collections;
 public abstract class GunBase : MonoBehaviour
 {
     [SerializeField] protected int numberOfBulletsPerShot;
-    [SerializeField] protected float shootDelay;
-    [SerializeField] protected GameObject bulletPrefab;
+    public float shootDelay;
+    
+    public GameObject bulletPrefab;
 
     protected bool isHoldingShoot;
 
