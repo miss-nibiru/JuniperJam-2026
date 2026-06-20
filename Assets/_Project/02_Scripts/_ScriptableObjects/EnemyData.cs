@@ -9,6 +9,7 @@ public class EnemyData : ScriptableObject
 {
     public enum EnemyMovementType
     {
+        None,
         Chase,
         LeftRight,
         Spiral,
@@ -27,9 +28,15 @@ public class EnemyData : ScriptableObject
 
     [SerializeField] private EnemyMovementType movementType;
     
+    // Welcome to complicating my life! --- lets be specific for entrances and movement now:
+
+    [SerializeField] private int introRows;
+    [SerializeField] private float introSpeed;
+    [SerializeField] private float chaseDelay;
 
     //[SerializeField] private WeaponData weaponWeakness;
-
+    [SerializeField] private float gridDestroyPadding;
+    
     public string EnemyName => enemyName;
     public GameObject EnemyPrefab => enemyPrefab;
     public int MaxHealth => maxHealth;
@@ -39,7 +46,10 @@ public class EnemyData : ScriptableObject
 
     public EnemyMovementType MovementType => movementType;
     
+    public int IntroRows => introRows;
+    public float IntroSpeed => introSpeed;
+    public float ChaseDelay => chaseDelay;
     
-    
+    public float GridDestroyPadding => gridDestroyPadding;
 
 }

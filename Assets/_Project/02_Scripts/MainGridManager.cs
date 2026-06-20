@@ -34,6 +34,19 @@ public class MainGridManager : MonoBehaviour
         return gridLocation;
 
     }
+
+    public bool IsThingOutOfBounds(Vector3 worldPosition, float padding = 0f)
+    {
+        Vector3 cornerA = GetGridLocation(0, 0);
+        Vector3 cornerB = GetGridLocation(columns - 1, rows - 1);
+        
+        float minX = Mathf.Min(cornerA.x, cornerB.x) - padding;
+        float maxX = Mathf.Max(cornerA.x, cornerB.x) + padding;
+        float minY = Mathf.Min(cornerA.y, cornerB.y) - padding;
+        float maxY = Mathf.Max(cornerA.y, cornerB.y) + padding;
+        
+        return worldPosition.x < minX || worldPosition.x > maxX || worldPosition.y < minY || worldPosition.y > maxY;
+    }
     
     private void OnDrawGizmos()
     {

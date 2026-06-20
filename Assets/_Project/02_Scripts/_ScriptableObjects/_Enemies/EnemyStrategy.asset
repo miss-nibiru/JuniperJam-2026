@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 368631421e1924a2b878faef74ed1789, type: 3}
-  m_Name: FaeEnemyStrategy
+  m_Name: EnemyStrategy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnGroupData
-  enemyData: {fileID: 11400000, guid: f74b95242caa6430d921572cb89b77d4, type: 2}
+  enemyData: {fileID: 11400000, guid: bf3f8a6fe1e144bcda427cfed62c6f28, type: 2}
   spawnPattern: 02000000
   spawnCoordinate: 00000000
   spawnLocation: 0
   selectedGridCell: []
-  patternDirection: 1
-  amountToSpawn: 5
-  enemiesPerPattern: 5
+  patternDirection: 0
+  clusterMovementType: 1
+  groupHorizontalDistance: 1
+  groupHorizontalSpeed: 4
+  groupAdvanceSpeed: 3
+  amountToSpawn: 1
+  enemiesPerPattern: 10
   patternSpacing: 2
   maxActiveOfType: 10
   delayBetweenSpawns: 3

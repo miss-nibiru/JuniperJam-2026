@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemySpawnGroupData testSpawnGroupData;
     [SerializeField] private MainGridManager mainGrid;
     [SerializeField] private EnemyManager enemyManager;
+    [SerializeField] private Transform playerTarget;
 
     private void Update()
     {
@@ -25,73 +26,81 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private Vector3 GetSpawnPosition(EnemySpawnGroupData spawnGroupData)
+    private Vector3 GetSpawnPosition(
+    EnemySpawnGroupData spawnGroupData,
+    out EnemySpawnGroupData.EnemySpawnCoordinate chosenCoordinate
+)
 {
+    chosenCoordinate = EnemySpawnGroupData.EnemySpawnCoordinate.North;
+
     if (!spawnGroupData) return transform.position;
+
+    EnemySpawnGroupData.EnemySpawnCoordinate[] coordinates = spawnGroupData.SpawnCoordinate;
+
+    if (coordinates != null && coordinates.Length > 0)
+    {
+        chosenCoordinate = coordinates[0];
+    }
 
     // STRATEGY ONE
     if (spawnGroupData.SpawnLocation == EnemySpawnGroupData.EnemySpawnLocation.SelectedGridCell)
     {
-        
         Vector2Int[] selectedCells = spawnGroupData.SelectedGridCell;
+
         if (selectedCells == null || selectedCells.Length == 0)
         {
             return transform.position;
         }
-        
+
         int randomCellIndex = Random.Range(0, selectedCells.Length);
         Vector2Int chosenCell = selectedCells[randomCellIndex];
+
         return mainGrid.GetGridLocation(chosenCell.x, chosenCell.y);
     }
 
     // STRATEGY TWO
     if (spawnGroupData.SpawnLocation == EnemySpawnGroupData.EnemySpawnLocation.RandomCoordinate)
     {
-        // get all the allowed spawn coordinates from the scriptable object
-        EnemySpawnGroupData.EnemySpawnCoordinate[] coordinates = spawnGroupData.SpawnCoordinate;
         if (coordinates == null || coordinates.Length == 0)
         {
             return transform.position;
         }
-        
+
         int randomCoordinateIndex = Random.Range(0, coordinates.Length);
-        EnemySpawnGroupData.EnemySpawnCoordinate chosenCoordinate = coordinates[randomCoordinateIndex];
-        int column = 0; int row = 0;
-        
+        chosenCoordinate = coordinates[randomCoordinateIndex];
+
+        int column = 0;
+        int row = 0;
+
         if (chosenCoordinate == EnemySpawnGroupData.EnemySpawnCoordinate.North)
         {
             column = Random.Range(0, mainGrid.columns);
             row = mainGrid.rows - 1;
         }
-        
         else if (chosenCoordinate == EnemySpawnGroupData.EnemySpawnCoordinate.South)
         {
             column = Random.Range(0, mainGrid.columns);
             row = 0;
         }
-        
         else if (chosenCoordinate == EnemySpawnGroupData.EnemySpawnCoordinate.East)
         {
             column = mainGrid.columns - 1;
             row = Random.Range(0, mainGrid.rows);
         }
-        
         else if (chosenCoordinate == EnemySpawnGroupData.EnemySpawnCoordinate.West)
         {
             column = 0;
             row = Random.Range(0, mainGrid.rows);
         }
-        
+
         return mainGrid.GetGridLocation(column, row);
     }
-    
+
     return transform.position;
-    
-    }
+}
 
     public void SpawnEnemy(EnemySpawnGroupData spawnGroupData)
     {
-
         if (!spawnGroupData) return;
         if (!enemyManager.CanSpawnEnemy(spawnGroupData)) return;
         
@@ -104,8 +113,8 @@ public class EnemySpawner : MonoBehaviour
             chosenPattern = spawnPattern[randomPatternIndex];
         }
         
-        
-        Vector3 spawnPosition = GetSpawnPosition(spawnGroupData);
+        EnemySpawnGroupData.EnemySpawnCoordinate chosenCoordinate;
+        Vector3 spawnPosition = GetSpawnPosition(spawnGroupData, out chosenCoordinate);
         
         if (chosenPattern == EnemySpawnGroupData.EnemySpawnPattern.Single)
             CreateEnemyAtPosition(spawnGroupData, spawnPosition);
@@ -114,20 +123,23 @@ public class EnemySpawner : MonoBehaviour
             SpawnMultiple(spawnGroupData, spawnPosition);
         
         else if (chosenPattern == EnemySpawnGroupData.EnemySpawnPattern.Line)
-            SpawnLine(spawnGroupData, spawnPosition);
-        
-        else if (chosenPattern == EnemySpawnGroupData.EnemySpawnPattern.Circle)
-            SpawnCircle(spawnGroupData, spawnPosition);
-        
+            SpawnLine(spawnGroupData, spawnPosition, chosenCoordinate);
     }
     
 
     private void SpawnCircle(EnemySpawnGroupData spawnGroupData, Vector3 spawnPosition)
     {
         
+        // if theres time!
+        
     }
 
-    private void SpawnLine(EnemySpawnGroupData spawnGroupData, Vector3 spawnPosition)
+    private void SpawnLine(
+        EnemySpawnGroupData spawnGroupData,
+        Vector3 spawnPosition,
+        EnemySpawnGroupData.EnemySpawnCoordinate chosenCoordinate
+    )
+    
     {
         int enemiesToSpawn = spawnGroupData.EnemiesPerPattern;
         float spacing = spawnGroupData.PatternSpacing;
@@ -136,23 +148,48 @@ public class EnemySpawner : MonoBehaviour
 
         if (spawnGroupData.PatternDirection == EnemySpawnGroupData.EnemyPatternDirection.Horizontal)
             direction = Vector3.right;
-        
+
         else if (spawnGroupData.PatternDirection == EnemySpawnGroupData.EnemyPatternDirection.Vertical)
             direction = Vector3.up;
-        
+
         else if (spawnGroupData.PatternDirection == EnemySpawnGroupData.EnemyPatternDirection.DiagonalUp)
             direction = new Vector3(1, 1, 0).normalized;
-        
+
         else if (spawnGroupData.PatternDirection == EnemySpawnGroupData.EnemyPatternDirection.DiagonalDown)
             direction = new Vector3(1, -1, 0).normalized;
+
+        Transform formationParent = null;
+
+        if (spawnGroupData.GroupMovementType == EnemySpawnGroupData.ClusterMovementType.SpaceInvaders)
+        {
+            GameObject formationObject = new GameObject("EnemyFormation_SpaceInvaders");
+            formationObject.transform.position = spawnPosition;
+
+            EnemyFormationController formationController = formationObject.AddComponent<EnemyFormationController>();
+
+            formationController.InitializeFormation(
+                chosenCoordinate,
+                spawnGroupData.GroupHorizontalDistance,
+                spawnGroupData.GroupHorizontalSpeed,
+                spawnGroupData.GroupAdvanceSpeed
+            );
+
+            formationParent = formationObject.transform;
+        }
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             if (!enemyManager.CanSpawnEnemy(spawnGroupData)) return;
-            Vector3 finalSpawnPosition = spawnPosition + direction * spacing * i;
-            CreateEnemyAtPosition(spawnGroupData, finalSpawnPosition);
+
+            Vector3 finalSpawnPosition = spawnPosition + direction * (spacing * i);
+
+            GameObject spawnedEnemy = CreateEnemyAtPosition(spawnGroupData, finalSpawnPosition);
+
+            if (spawnedEnemy && formationParent)
+            {
+                spawnedEnemy.transform.SetParent(formationParent, true);
+            }
         }
-        
     }
 
     private void SpawnMultiple(EnemySpawnGroupData spawnGroupData, Vector3 spawnPosition)
@@ -173,21 +210,21 @@ public class EnemySpawner : MonoBehaviour
             CreateEnemyAtPosition(spawnGroupData, finalSpawnPosition);
         }
     }
-
     
-    private void CreateEnemyAtPosition(EnemySpawnGroupData spawnGroupData, Vector3 spawnPosition)
+    private GameObject CreateEnemyAtPosition(EnemySpawnGroupData spawnGroupData, Vector3 spawnPosition)
     {
-        Debug.Log("Trying to create enemy at position");
+
         EnemyData enemyData = spawnGroupData.EnemyData;
-        if (!enemyData) return;
+        if (!enemyData) return null;
         GameObject enemyPrefab = enemyData.EnemyPrefab;
-        if (!enemyPrefab) return;
+        if (!enemyPrefab) return null;
         GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         EnemyController enemyController = spawnedEnemy.GetComponent<EnemyController>();
-        if (!enemyController) return;
+        if (!enemyController) return null;
 
+        enemyController.InitializeEnemy(enemyData, mainGrid, playerTarget);
         enemyManager.DetectEnemy(enemyController);
-        
+        return spawnedEnemy;
     }
 
 }

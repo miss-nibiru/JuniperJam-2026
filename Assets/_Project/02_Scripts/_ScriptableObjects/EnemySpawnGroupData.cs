@@ -10,6 +10,12 @@ public class EnemySpawnGroupData : ScriptableObject
         Line,
         Circle
     }
+
+    public enum ClusterMovementType
+    {
+        None,
+        SpaceInvaders
+    }
     
     public enum EnemySpawnCoordinate
     {
@@ -40,6 +46,11 @@ public class EnemySpawnGroupData : ScriptableObject
     [SerializeField] private Vector2Int[] selectedGridCell;
     [SerializeField] private EnemyPatternDirection patternDirection;
     
+    [SerializeField] private ClusterMovementType clusterMovementType;
+    [SerializeField] private float groupHorizontalDistance;
+    [SerializeField] private float groupHorizontalSpeed;
+    [SerializeField] private float groupAdvanceSpeed;
+    
     [SerializeField] private int amountToSpawn; // How many enemies are spawned DURING the time secs of the wave
     [SerializeField] private int enemiesPerPattern; // how many enemies can appear in the pattern clusters
     [SerializeField] private float patternSpacing; // how much spacing from the starting point can they take
@@ -63,6 +74,11 @@ public class EnemySpawnGroupData : ScriptableObject
     public float DelayBetweenSpawns => delayBetweenSpawns;
     public EnemySpawnLocation SpawnLocation => spawnLocation;
     public Vector2Int[] SelectedGridCell => selectedGridCell;
+    
+    public ClusterMovementType GroupMovementType => clusterMovementType;
+    public float GroupHorizontalDistance => groupHorizontalDistance;
+    public float GroupHorizontalSpeed => groupHorizontalSpeed;
+    public float GroupAdvanceSpeed => groupAdvanceSpeed;
     
     
     

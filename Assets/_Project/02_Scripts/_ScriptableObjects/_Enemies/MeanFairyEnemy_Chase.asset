@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc31fd152633a4cb3b168a8bc7d6d8f1, type: 3}
+  m_Name: MeanFairyEnemy_Chase
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Mean Fairy
+  enemyPrefab: {fileID: 8969623715672447508, guid: 4bf292c1f70c645c8a84ee6aa68eee67, type: 3}
+  maxHealth: 20
+  damageAmount: 1
+  moveSpeed: 2
+  movementType: 1
+  introRows: 4
+  introSpeed: 3
+  chaseDelay: 1
