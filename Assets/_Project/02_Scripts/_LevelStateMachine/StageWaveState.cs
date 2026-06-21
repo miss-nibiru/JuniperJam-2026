@@ -1,23 +1,63 @@
 using UnityEngine;
 
 /// <summary>
-/// controls the waves of the enemies that spawn -- interface connected to the stateinterface thingy
+/// Controls one playable wave of the level.
 /// </summary>
-
 public class StageWaveState : ILevelState
 {
-    public void StartLevel()
+    private LevelWaveData _levelWaveData;
+    private EnemySpawner _enemySpawner;
+    private EnemyManager _enemyManager;
+    private LevelStateMachine _levelStateMachine;
+
+    private float _currentWaveTimer;
+    private float _currentSpawnTimer;
+    private bool _levelFinished;
+
+    public StageWaveState(
+        LevelWaveData levelWaveData,
+        EnemySpawner enemySpawner,
+        EnemyManager enemyManager,
+        LevelStateMachine levelStateMachine
+    )
     {
-        Debug.Log("Level has started");
+        _levelWaveData = levelWaveData;
+        _enemySpawner = enemySpawner;
+        _enemyManager = enemyManager;
+        _levelStateMachine = levelStateMachine;
     }
 
+    public void StartLevel()
+    {
+        _currentWaveTimer = _levelWaveData.WaveTime;
+        _currentSpawnTimer = _levelWaveData.SpawnDelay;
+        _levelFinished = false;
+
+        Debug.Log("Wave started: " + _levelWaveData.LevelName);
+    }
+    
     public void ExecuteLevel()
     {
-        // Later this will spawn enemies
+        if (_levelFinished)
+        {
+            return;
+        }
+
+        _currentWaveTimer -= Time.deltaTime;
+
+        if (_currentWaveTimer <= 0)
+        {
+            _currentWaveTimer = 0;
+            _levelFinished = true;
+
+            Debug.Log("Wave timer finished: " + _levelWaveData.LevelName);
+
+            _levelStateMachine.GoToNextLevel();
+        }
     }
 
     public void StopLevel()
     {
-        Debug.Log("Incomming next wave");
+        Debug.Log("Incoming next wave");
     }
 }
