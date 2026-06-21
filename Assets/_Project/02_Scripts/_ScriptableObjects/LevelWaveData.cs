@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+///  this is essentially what builds the waves, what is allowed per wave and how it behaves
+/// Lets me add a million thousand levels if i want!!
+/// </summary>
+
 [CreateAssetMenu(fileName = "LevelWaveData", menuName = "Scriptable Objects/LevelWaveData")]
 public class LevelWaveData : ScriptableObject
 {

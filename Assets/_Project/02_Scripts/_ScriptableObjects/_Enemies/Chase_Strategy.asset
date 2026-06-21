@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368631421e1924a2b878faef74ed1789, type: 3}
+  m_Name: Chase_Strategy
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnGroupData
+  enemyData: {fileID: 11400000, guid: f74b95242caa6430d921572cb89b77d4, type: 2}
+  spawnPattern: 0000000001000000
+  spawnCoordinate: 01000000000000000200000003000000
+  spawnLocation: 1
+  selectedGridCell:
+  - {x: 3, y: 3}
+  - {x: 18, y: 3}
+  - {x: 3, y: 18}
+  - {x: 18, y: 18}
+  patternDirection: 0
+  clusterMovementType: 0
+  groupHorizontalDistance: 3
+  groupHorizontalSpeed: 2
+  groupAdvanceSpeed: 1
+  amountToSpawn: 3
+  enemiesPerPattern: 3
+  patternSpacing: 2
+  maxActiveOfType: 6
+  delayBetweenSpawns: 7

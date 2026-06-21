@@ -19,7 +19,7 @@ public class LevelStateMachine : MonoBehaviour
         if (levels == null || levels.Length == 0) return;
         Debug.Log("Starting level wave: " + levels[_currentLevelIndex].LevelName);
 
-        ChangeLevelState(new StageWaveState(
+        ChangeLevelState(new LevelWaveState(
             levels[_currentLevelIndex],
             enemySpawner,
             enemyManager,
@@ -50,7 +50,7 @@ public class LevelStateMachine : MonoBehaviour
         }
 
         Debug.Log("Starting level wave: " + levels[_currentLevelIndex].LevelName);
-        ChangeLevelState(new StageWaveState(levels[_currentLevelIndex], enemySpawner, enemyManager, this));
+        ChangeLevelState(new LevelWaveState(levels[_currentLevelIndex], enemySpawner, enemyManager, this));
     }
     
 }
