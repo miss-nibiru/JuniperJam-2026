@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 
-public class GunManager : MonoBehaviour
+public class GunController : MonoBehaviour
 {
     private bool isHoldingShoot;
     private float timeThatShootDelayWillBeOver;
@@ -11,8 +11,8 @@ public class GunManager : MonoBehaviour
     [SerializeField] private GunBase machineGun;
     [SerializeField] private GunBase singleShotShotgun;
 
+    private bool shootingEnabled;
     private GunBase weaponBeingUsed;
-
 
     public enum CurrentWeapon
     {
@@ -23,8 +23,8 @@ public class GunManager : MonoBehaviour
 
     private void Awake()
     {
-        int number = Random.Range(0, 3);
-        currentWeapon = (CurrentWeapon)number;
+        //int number = Random.Range(0, 3);
+        //currentWeapon = (CurrentWeapon)number;
     }
 
     public CurrentWeapon currentWeapon;
@@ -40,7 +40,7 @@ public class GunManager : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && shootingEnabled)
         {
             isHoldingShoot = true;
             StartCoroutine(KeepShooting());
@@ -62,4 +62,15 @@ public class GunManager : MonoBehaviour
         }
     }
 
+    public void SetShootingEnabled(bool enabled)
+    {
+        if (enabled)
+        {
+            shootingEnabled = true;
+        }
+        else
+        {
+            shootingEnabled = false;
+        }
+    }
 }

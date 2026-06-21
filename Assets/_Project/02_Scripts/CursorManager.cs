@@ -6,14 +6,7 @@ public class CursorManager : MonoBehaviour
     [SerializeField] private GameObject cursor;
 
     private GameObject cursorInstance;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
-        cursorInstance = Instantiate(cursor);
-    }
+    private bool isCursorEnabled;
 
     // Update is called once per frame
     void Update()
@@ -26,6 +19,24 @@ public class CursorManager : MonoBehaviour
 
         mouseWorldPosition.z = 0f;
         
-        cursorInstance.transform.position = mouseWorldPosition;
+        if (isCursorEnabled) cursorInstance.transform.position = mouseWorldPosition;
+    }
+
+    public void SetShootingCursorEnabled(bool enabled)
+    {
+        if (enabled)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+            cursorInstance = Instantiate(cursor);
+            isCursorEnabled = true;
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            Destroy(cursorInstance);
+            isCursorEnabled = false;
+        }
     }
 }
