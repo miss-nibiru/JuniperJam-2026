@@ -89,7 +89,6 @@ public class GunController : MonoBehaviour
             case SpinningWheel.WeaponChoice.SingleShotShotgun:
                 weaponBeingUsed = singleShotShotgun;
                 break;
-
             default:
                 break;
         }

@@ -2800,7 +2800,7 @@ MonoBehaviour:
   shotgun: {fileID: 2081915355}
   machineGun: {fileID: 2081915357}
   singleShotShotgun: {fileID: 2081915359}
-  currentWeapon: 0
+  weaponBeingUsed: {fileID: 2081915355}
 --- !u!114 &2081915359
 MonoBehaviour:
   m_ObjectHideFlags: 0
