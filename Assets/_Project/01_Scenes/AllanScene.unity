@@ -778,11 +778,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd7c137b1986b547b8c41b38d900a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RunStateManager
+  spinningWheel: {fileID: 1637331382}
+  finishedSpinning: 0
   cursorManager: {fileID: 695341552}
   uiManager: {fileID: 548895679}
   gunController: {fileID: 2081915358}
   enemyManager: {fileID: 649241670}
-  spinningWheel: {fileID: 1637331382}
 --- !u!1 &695341550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,7 +1776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1344443737
 RectTransform:
   m_ObjectHideFlags: 0

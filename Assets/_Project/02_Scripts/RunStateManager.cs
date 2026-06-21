@@ -15,9 +15,19 @@ public class RunStateManager : MonoBehaviour
 
     [SerializeField] private CursorManager cursorManager;
     [SerializeField] private UIManager uiManager;
-    [SerializeField] private GunController gunController;
+    public GunController gunController;
     [SerializeField] private EnemyManager enemyManager;
-    
+
+    private void OnEnable()
+    {
+        spinningWheel.SpinFinished += HandleSpinFinished;
+    }
+
+    private void OnDisable()
+    {
+        spinningWheel.SpinFinished -= HandleSpinFinished;
+    }
+
     void Start()
     {
         currentRunState = SpinRunState;
@@ -32,15 +42,15 @@ public class RunStateManager : MonoBehaviour
         if (finishedSpinning)
         {
             SwitchState(CombatRunState);
-
+            finishedSpinning = false;
         }
     }
 
-    public void SwitchState(RunBaseState state)
+    public void SwitchState(RunBaseState newState)
     {
-        state.ExitState(this);
-        currentRunState = state;
-        state.EnterState(this);
+        currentRunState.ExitState(this);
+        currentRunState = newState;
+        currentRunState.EnterState(this);
     }
 
     public void SetCombatSystemsEnabled(bool enabled)
@@ -49,5 +59,11 @@ public class RunStateManager : MonoBehaviour
         cursorManager?.SetShootingCursorEnabled(enabled);
         gunController?.SetShootingEnabled(enabled);
         enemyManager?.RemoveAllEnemies();
+    }
+
+    void HandleSpinFinished(SpinningWheel.WeaponChoice weaponChoice)
+    {
+        gunController.SelectWeapon(weaponChoice);
+        SwitchState(CombatRunState);
     }
 }

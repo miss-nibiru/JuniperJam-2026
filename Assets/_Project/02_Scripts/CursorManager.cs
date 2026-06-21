@@ -8,6 +8,12 @@ public class CursorManager : MonoBehaviour
     private GameObject cursorInstance;
     private bool isCursorEnabled;
 
+    private void Awake()
+    {
+        cursorInstance = Instantiate(cursor);
+        cursorInstance.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -27,15 +33,15 @@ public class CursorManager : MonoBehaviour
         if (enabled)
         {
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Confined;
-            cursorInstance = Instantiate(cursor);
+            Cursor.lockState = CursorLockMode.Confined;;
+            cursorInstance.SetActive(true);
             isCursorEnabled = true;
         }
-        else
+        else if (!enabled)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
-            Destroy(cursorInstance);
+            cursorInstance.SetActive(false);
             isCursorEnabled = false;
         }
     }

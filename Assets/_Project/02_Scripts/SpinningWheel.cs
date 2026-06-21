@@ -11,6 +11,7 @@ public class SpinningWheel : MonoBehaviour
     public event Action<WeaponChoice> SpinFinished;
 
     private bool inSpin;
+    private bool hasStartedSpinning;
 
     private Rigidbody2D rb;
 
@@ -34,13 +35,15 @@ public class SpinningWheel : MonoBehaviour
         if (rb.angularVelocity > 0)
         {
             rb.angularVelocity -= stopPower * Time.deltaTime;
+            hasStartedSpinning = true;
         }
-        if (rb.angularVelocity == 0 && inSpin)
+        if (rb.angularVelocity == 0 && inSpin && hasStartedSpinning) 
         {
             GetWeaponChoice();
             inSpin = false;
             SpinFinished?.Invoke(weaponChoiceWon);
         }
+
     }
 
     public void Spin()

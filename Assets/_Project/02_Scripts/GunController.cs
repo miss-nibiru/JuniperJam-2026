@@ -12,14 +12,14 @@ public class GunController : MonoBehaviour
     [SerializeField] private GunBase singleShotShotgun;
 
     private bool shootingEnabled;
-    private GunBase weaponBeingUsed;
+    public GunBase weaponBeingUsed;
 
-    public enum CurrentWeapon
+    /*public enum CurrentWeapon
     {
         Shotgun,
         MachineGun,
         SingleShotShotgun
-    }
+    }*/
 
     private void Awake()
     {
@@ -27,15 +27,15 @@ public class GunController : MonoBehaviour
         //currentWeapon = (CurrentWeapon)number;
     }
 
-    public CurrentWeapon currentWeapon;
+    //public CurrentWeapon currentWeapon;
 
     private void Start()
     {
-        if (currentWeapon == CurrentWeapon.Shotgun) weaponBeingUsed = shotgun;
+        /*if (currentWeapon == CurrentWeapon.Shotgun) weaponBeingUsed = shotgun;
        
         if (currentWeapon == CurrentWeapon.MachineGun) weaponBeingUsed = machineGun;
 
-        if (currentWeapon == CurrentWeapon.SingleShotShotgun) weaponBeingUsed = singleShotShotgun;
+        if (currentWeapon == CurrentWeapon.SingleShotShotgun) weaponBeingUsed = singleShotShotgun;*/
     }
 
     public void OnShoot(InputAction.CallbackContext context)
@@ -71,6 +71,27 @@ public class GunController : MonoBehaviour
         else
         {
             shootingEnabled = false;
+        }
+    }
+
+    public void SelectWeapon(SpinningWheel.WeaponChoice weaponChoice)
+    {
+        switch (weaponChoice)
+        {
+            case SpinningWheel.WeaponChoice.Shotgun:
+                weaponBeingUsed = shotgun;
+                break;
+
+            case SpinningWheel.WeaponChoice.MachineGun:
+                weaponBeingUsed = machineGun;
+                break;
+
+            case SpinningWheel.WeaponChoice.SingleShotShotgun:
+                weaponBeingUsed = singleShotShotgun;
+                break;
+
+            default:
+                break;
         }
     }
 }
