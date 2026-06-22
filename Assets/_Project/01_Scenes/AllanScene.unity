@@ -2696,13 +2696,25 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &2081915354
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1892360076320084604, guid: 559787e988746400d88ac32bd6ced846, type: 3}
-  m_PrefabInstance: {fileID: 7486386733301918497}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2081915358 stripped
+  m_GameObject: {fileID: 2081915353}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 852737933}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2081915355
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7343062724233400598, guid: 559787e988746400d88ac32bd6ced846, type: 3}
-  m_PrefabInstance: {fileID: 7486386733301918497}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081915353}
   m_Enabled: 1
@@ -2820,8 +2832,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a795d258676f5504aad80877c156fd1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunManager
---- !u!1001 &7486386733301918497
-PrefabInstance:
+  shotgun: {fileID: 2081915355}
+  machineGun: {fileID: 2081915357}
+  singleShotShotgun: {fileID: 2081915359}
+  weaponBeingUsed: {fileID: 2081915355}
+--- !u!114 &2081915359
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2897,7 +2913,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1376579401}
   - {fileID: 1043619045}
-  - {fileID: 7486386733301918497}
+  - {fileID: 2081915354}
   - {fileID: 1756278369}
   - {fileID: 1225870048}
   - {fileID: 967676674}
