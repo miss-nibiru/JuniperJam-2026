@@ -24,9 +24,23 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         EnemyController enemy = collision.GetComponent<EnemyController>();
-        if (!enemy) return;
-        enemy.TakeDamage(bulletDamage);
-        Destroy(gameObject);
+
+        if (enemy)
+        {
+            enemy.TakeDamage(bulletDamage);
+            Destroy(gameObject);
+            return;
+        }
+
+        EnemyProjectileController enemyProjectile = collision.GetComponent<EnemyProjectileController>(); //if it collides with a projectile with the main brain attached
+
+        if (enemyProjectile)
+        {
+            enemyProjectile.TakeDamage(bulletDamage);
+            Destroy(gameObject);
+            return;
+            
+        }
 
     }
 }

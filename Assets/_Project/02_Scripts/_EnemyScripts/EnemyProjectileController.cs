@@ -12,15 +12,18 @@ public class EnemyProjectileController : MonoBehaviour
 
     private int _currentHealth;
     private float _projectileLifeTimer;
+    private Vector3 _moveDirection;
 
-    public void InitializeProjectile(ProjectileData projectileData, MainGridManager mainGrid, Transform playerTargetPoint)
+    public void InitializeProjectile(ProjectileData projectile, MainGridManager grid, Transform targetPoint)
     {
-        this.projectileData = projectileData;
-        this.mainGrid = mainGrid;
-        this.playerTargetPoint = playerTargetPoint;
+        projectileData = projectile;
+        mainGrid = grid;
+        playerTargetPoint = targetPoint;
 
-        _currentHealth = projectileData.ProjectileHealth;
-        _projectileLifeTimer = projectileData.ProjectileLifeTime;
+        _currentHealth = projectile.ProjectileHealth;
+        _projectileLifeTimer = projectile.ProjectileLifeTime;
+        _moveDirection = transform.up * projectileData.ProjectileSpeed;
+        
     }
 
     private void Start()
@@ -29,33 +32,40 @@ public class EnemyProjectileController : MonoBehaviour
 
         _currentHealth = projectileData.ProjectileHealth;
         _projectileLifeTimer = projectileData.ProjectileLifeTime;
+        _moveDirection = transform.up * projectileData.ProjectileSpeed;
+        
     }
 
     private void Update()
     {
         if (!projectileData) return;
-
         _projectileLifeTimer -= Time.deltaTime;
 
         if (_projectileLifeTimer <= 0)
         {
-            Destroy(gameObject);
-            return;
+            Destroy(gameObject); return;
         }
 
         if (mainGrid && mainGrid.IsThingOutOfBounds(transform.position, projectileOutBounds))
         {
-            Destroy(gameObject);
-            return;
+            Destroy(gameObject); return;
         }
 
-        if (projectileData.Behaviour == ProjectileData.ProjectileBehaviour.Chase)
-        {
-            MoveTowardPlayer();
-        }
+        if (projectileData.Behaviour == ProjectileData.ProjectileBehaviour.Chase) MoveTowardPlayer();
+        
+
+        if (projectileData.Behaviour == ProjectileData.ProjectileBehaviour.Spread) MoveForwardOnly();
+
     }
 
-    private void MoveTowardPlayer()
+    private void MoveForwardOnly() //Spread
+    {
+        
+        if(!playerTargetPoint) return;
+        transform.position += _moveDirection * projectileData.ProjectileSpeed * Time.deltaTime;
+    }
+
+    private void MoveTowardPlayer() //chase
     {
         if (!playerTargetPoint) return;
 
@@ -65,17 +75,15 @@ public class EnemyProjectileController : MonoBehaviour
             projectileData.ProjectileSpeed * Time.deltaTime
         );
     }
-
+    
     public void TakeDamage(int damage)
     {
         if (!projectileData.CanBeShot) return;
 
         _currentHealth -= damage;
 
-        if (_currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
+        if (_currentHealth <= 0) Destroy(gameObject);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)

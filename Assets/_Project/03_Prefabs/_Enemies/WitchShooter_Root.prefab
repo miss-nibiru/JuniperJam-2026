@@ -91,6 +91,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &3281762889756165187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4750358937849999820}
+  m_Layer: 0
+  m_Name: Projectile_SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4750358937849999820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3281762889756165187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.45, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1531108845567079501}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8969623715672447508
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1531108845567079501}
   - component: {fileID: 3215849977829151486}
+  - component: {fileID: 2770882581530625544}
   - component: {fileID: 5915854646191786471}
   - component: {fileID: 2514278108096288670}
   m_Layer: 0
@@ -124,6 +156,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8421583336076505678}
+  - {fileID: 4750358937849999820}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3215849977829151486
@@ -141,6 +174,20 @@ MonoBehaviour:
   mainGrid: {fileID: 0}
   enemyData: {fileID: 11400000, guid: f74b95242caa6430d921572cb89b77d4, type: 2}
   playerTargetPoint: {fileID: 0}
+--- !u!114 &2770882581530625544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8969623715672447508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee665e0525e6f483088480dc5c8413a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyShooterController
+  projectileStrategyData: {fileID: 11400000, guid: edb4d0a27de26400e9c8ebcdcd9ce324, type: 2}
+  projectileSpawnPoint: {fileID: 4750358937849999820}
 --- !u!50 &5915854646191786471
 Rigidbody2D:
   serializedVersion: 5

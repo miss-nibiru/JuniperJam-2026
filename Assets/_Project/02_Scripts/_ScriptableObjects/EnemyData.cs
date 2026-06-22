@@ -33,8 +33,6 @@ public class EnemyData : ScriptableObject
     [SerializeField] private int introRows;
     [SerializeField] private float introSpeed;
     [SerializeField] private float chaseDelay;
-
-    //[SerializeField] private WeaponData weaponWeakness;
     [SerializeField] private float gridDestroyPadding;
     
     public string EnemyName => enemyName;

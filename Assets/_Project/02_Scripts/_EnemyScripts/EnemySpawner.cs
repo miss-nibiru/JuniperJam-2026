@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// Knows how to spawn a monster on the grid and where to sapwn them // calls for the enemy to be reistered as active
@@ -14,23 +12,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private MainGridManager mainGrid;
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private Transform playerTarget;
+    
 
-    private void Update()
+    private Vector3 GetSpawnPosition(EnemySpawnGroupData spawnGroupData, out EnemySpawnGroupData.EnemySpawnCoordinate chosenCoordinate)
     {
-        if (Keyboard.current == null) return;
-
-        if (Keyboard.current.tKey.wasPressedThisFrame)
-        {
-            Debug.Log("T pressed, testing enemy spawn");
-            SpawnEnemy(testSpawnGroupData);
-        }
-    }
-
-    private Vector3 GetSpawnPosition(
-    EnemySpawnGroupData spawnGroupData,
-    out EnemySpawnGroupData.EnemySpawnCoordinate chosenCoordinate
-)
-{
     chosenCoordinate = EnemySpawnGroupData.EnemySpawnCoordinate.North;
 
     if (!spawnGroupData) return transform.position;
@@ -127,13 +112,6 @@ public class EnemySpawner : MonoBehaviour
     }
     
 
-    private void SpawnCircle(EnemySpawnGroupData spawnGroupData, Vector3 spawnPosition)
-    {
-        
-        // if theres time!
-        
-    }
-
     private void SpawnLine(
         EnemySpawnGroupData spawnGroupData,
         Vector3 spawnPosition,
@@ -214,17 +192,20 @@ public class EnemySpawner : MonoBehaviour
     private GameObject CreateEnemyAtPosition(EnemySpawnGroupData spawnGroupData, Vector3 spawnPosition)
     {
 
-        EnemyData enemyData = spawnGroupData.EnemyData;
-        if (!enemyData) return null;
-        GameObject enemyPrefab = enemyData.EnemyPrefab;
+        EnemyData enemy = spawnGroupData.EnemyData;
+        if (!enemy) return null;
+        GameObject enemyPrefab = enemy.EnemyPrefab;
         if (!enemyPrefab) return null;
         GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         EnemyController enemyController = spawnedEnemy.GetComponent<EnemyController>();
         if (!enemyController) return null;
 
-        enemyController.InitializeEnemy(enemyData, mainGrid, playerTarget);
+        enemyController.InitializeEnemy(enemy, mainGrid, playerTarget);
+        EnemyShooterController shooterController = spawnedEnemy.GetComponent<EnemyShooterController>();
+        if (shooterController) shooterController.InitializeShooter(mainGrid, playerTarget);
         enemyManager.DetectEnemy(enemyController);
         return spawnedEnemy;
+        
     }
 
 }

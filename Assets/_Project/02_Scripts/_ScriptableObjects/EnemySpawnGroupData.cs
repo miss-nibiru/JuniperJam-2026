@@ -7,8 +7,7 @@ public class EnemySpawnGroupData : ScriptableObject
     {
         Single,
         Multiple,
-        Line,
-        Circle
+        Line
     }
 
     public enum ClusterMovementType
