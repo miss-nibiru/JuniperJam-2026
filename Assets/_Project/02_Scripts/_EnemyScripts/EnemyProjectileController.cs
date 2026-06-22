@@ -13,8 +13,10 @@ public class EnemyProjectileController : MonoBehaviour
     private int _currentHealth;
     private float _projectileLifeTimer;
     private Vector3 _moveDirection;
+    private bool _projectileExists;
 
-    public void InitializeProjectile(ProjectileData projectile, MainGridManager grid, Transform targetPoint)
+    public void InitializeProjectile(ProjectileData projectile, MainGridManager grid, Transform targetPoint,
+        Vector3 projectileDirection)
     {
         projectileData = projectile;
         mainGrid = grid;
@@ -22,12 +24,16 @@ public class EnemyProjectileController : MonoBehaviour
 
         _currentHealth = projectile.ProjectileHealth;
         _projectileLifeTimer = projectile.ProjectileLifeTime;
-        _moveDirection = transform.up * projectileData.ProjectileSpeed;
-        
+        _moveDirection = projectileDirection.normalized;
+
+        if (_moveDirection == Vector3.zero) _moveDirection = transform.up;
+        _projectileExists = true;
+
     }
 
     private void Start()
     {
+        if(_projectileExists) return;
         if (!projectileData) return;
 
         _currentHealth = projectileData.ProjectileHealth;
@@ -58,10 +64,8 @@ public class EnemyProjectileController : MonoBehaviour
 
     }
 
-    private void MoveForwardOnly() //Spread
+    private void MoveForwardOnly() // Spread
     {
-        
-        if(!playerTargetPoint) return;
         transform.position += _moveDirection * projectileData.ProjectileSpeed * Time.deltaTime;
     }
 

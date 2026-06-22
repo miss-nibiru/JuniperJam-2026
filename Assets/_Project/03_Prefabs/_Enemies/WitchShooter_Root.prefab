@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooterController
   projectileStrategyData: {fileID: 11400000, guid: edb4d0a27de26400e9c8ebcdcd9ce324, type: 2}
-  projectileSpawnPoint: {fileID: 4750358937849999820}
+  projectileSpawnPoints: []
 --- !u!50 &5915854646191786471
 Rigidbody2D:
   serializedVersion: 5

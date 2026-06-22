@@ -201,8 +201,14 @@ public class EnemySpawner : MonoBehaviour
         if (!enemyController) return null;
 
         enemyController.InitializeEnemy(enemy, mainGrid, playerTarget);
-        EnemyShooterController shooterController = spawnedEnemy.GetComponent<EnemyShooterController>();
-        if (shooterController) shooterController.InitializeShooter(mainGrid, playerTarget);
+
+        EnemyShooterController[] shooterControllers = spawnedEnemy.GetComponents<EnemyShooterController>();
+
+        foreach (EnemyShooterController shooterController in shooterControllers)
+        {
+            shooterController.InitializeShooter(mainGrid, playerTarget);
+        }
+
         enemyManager.DetectEnemy(enemyController);
         return spawnedEnemy;
         

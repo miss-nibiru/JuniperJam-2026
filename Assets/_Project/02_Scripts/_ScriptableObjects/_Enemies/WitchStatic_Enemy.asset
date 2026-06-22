@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc31fd152633a4cb3b168a8bc7d6d8f1, type: 3}
-  m_Name: Witch_Static
+  m_Name: WitchStatic_Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Witch Shooter
   enemyPrefab: {fileID: 8969623715672447508, guid: 36d03888e60d74d30a58e7e9c886c9b9, type: 3}

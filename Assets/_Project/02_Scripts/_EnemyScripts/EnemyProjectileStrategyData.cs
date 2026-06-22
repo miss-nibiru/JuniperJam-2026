@@ -11,7 +11,8 @@ public class EnemyProjectileStrategyData : ScriptableObject
     public enum ShootingPattern
     {
         Single,
-        Burst
+        Burst,
+        Fan
     }
 
     
@@ -21,6 +22,7 @@ public class EnemyProjectileStrategyData : ScriptableObject
     [SerializeField] private float timeBetweenShots;
     [SerializeField] private int shotsPerBurst;
     [SerializeField] private float delayBetweenBurstShots;
+    [SerializeField] private float fanAngleSpread;
 
     public ProjectileData ProjectileData => projectileData;
     public ShootingPattern Pattern => shootingPattern;
@@ -28,6 +30,7 @@ public class EnemyProjectileStrategyData : ScriptableObject
     public float TimeBetweenShots => timeBetweenShots;
     public int ShotsPerBurst => shotsPerBurst;
     public float DelayBetweenBurstShots => delayBetweenBurstShots;
+    public float FanAngleSpread => fanAngleSpread;
     
     
 }
