@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 368631421e1924a2b878faef74ed1789, type: 3}
-  m_Name: WitchStatic_Strategy
+  m_Name: WitchRed_SpawnStrategy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnGroupData
-  enemyData: {fileID: 11400000, guid: 49936556ceef64732a902830a5bbd0bb, type: 2}
+  enemyData: {fileID: 11400000, guid: 74838d6a3d6444c0c88662415c0e43ef, type: 2}
   spawnPattern: 00000000
   spawnCoordinate: 0200000003000000
   spawnLocation: 1
   selectedGridCell:
-  - {x: 4, y: 8}
-  - {x: 4, y: 10}
-  - {x: 4, y: 12}
-  - {x: 4, y: 14}
-  - {x: 16, y: 8}
-  - {x: 16, y: 10}
-  - {x: 16, y: 12}
-  - {x: 16, y: 14}
+  - {x: 5, y: 8}
+  - {x: 5, y: 10}
+  - {x: 5, y: 12}
+  - {x: 5, y: 14}
+  - {x: 14, y: 8}
+  - {x: 14, y: 10}
+  - {x: 14, y: 12}
+  - {x: 14, y: 14}
   patternDirection: 0
   clusterMovementType: 0
   groupHorizontalDistance: 0
@@ -33,5 +33,5 @@ MonoBehaviour:
   amountToSpawn: 0
   enemiesPerPattern: 0
   patternSpacing: 0
-  maxActiveOfType: 10
-  delayBetweenSpawns: 2
+  maxActiveOfType: 2
+  delayBetweenSpawns: 20

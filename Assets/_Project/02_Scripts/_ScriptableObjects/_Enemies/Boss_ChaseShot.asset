@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdac1487a5ff54532b8f3f9211678867, type: 3}
-  m_Name: Witch_ChaseProjectileStrategy
+  m_Name: Boss_ChaseShot
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectileStrategyData
-  projectileData: {fileID: 11400000, guid: a623e37cf31464172bceab9f974e05a8, type: 2}
+  projectileData: {fileID: 11400000, guid: d1de9f48b58a7483a8275f0d20b8648b, type: 2}
   shootingPattern: 0
-  firstShotDelay: 1
-  timeBetweenShots: 2
-  shotsPerBurst: 1
-  delayBetweenBurstShots: 0.15
+  firstShotDelay: 3
+  timeBetweenShots: 10
+  shotsPerBurst: 0
+  delayBetweenBurstShots: 0
   burstAngleSpread: 0
   fanAngleSpread: 0

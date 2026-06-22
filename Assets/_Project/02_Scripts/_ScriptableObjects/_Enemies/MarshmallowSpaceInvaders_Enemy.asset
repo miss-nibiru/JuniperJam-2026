@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc31fd152633a4cb3b168a8bc7d6d8f1, type: 3}
-  m_Name: FinalBoss_Enemy
+  m_Name: MarshmallowSpaceInvaders_Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: Final Boss Enemy
-  enemyPrefab: {fileID: 8846461366675831921, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
-  maxHealth: 100
+  enemyName: SpaceInvaders Marshmallows
+  enemyPrefab: {fileID: 8969623715672447508, guid: 87de66f273f544e46bb3196c42b8f952, type: 3}
+  maxHealth: 20
   damageAmount: 1
-  moveSpeed: 1
-  leftRightDistance: 3
-  movementType: 2
-  introRows: 0
-  introSpeed: 0
-  chaseDelay: 0
-  gridDestroyPadding: 0
+  moveSpeed: 2
+  leftRightDistance: 0
+  movementType: 0
+  introRows: 4
+  introSpeed: 3
+  chaseDelay: 1
+  gridDestroyPadding: 1

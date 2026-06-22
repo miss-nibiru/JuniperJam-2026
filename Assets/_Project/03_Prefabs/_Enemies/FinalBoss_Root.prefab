@@ -428,6 +428,8 @@ GameObject:
   - component: {fileID: 8325048500298522653}
   - component: {fileID: 1992121987057256725}
   - component: {fileID: 5541698512126144807}
+  - component: {fileID: 8509155668159311856}
+  - component: {fileID: 2584218853827651269}
   m_Layer: 0
   m_Name: FinalBoss_Root
   m_TagString: Untagged
@@ -483,4 +485,36 @@ MonoBehaviour:
   projectileStrategyData: {fileID: 11400000, guid: 9b3feea0b5b724d688e90ef056d30e75, type: 2}
   projectileSpawnPoints:
   - {fileID: 6894896064149198780}
+  - {fileID: 2008813238314938312}
+--- !u!114 &8509155668159311856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846461366675831921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee665e0525e6f483088480dc5c8413a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyShooterController
+  projectileStrategyData: {fileID: 11400000, guid: dd0ff8691b8394129879e8f4176ed5cd, type: 2}
+  projectileSpawnPoints:
+  - {fileID: 1585180139735772904}
+  - {fileID: 6894896064149198780}
+--- !u!114 &2584218853827651269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846461366675831921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee665e0525e6f483088480dc5c8413a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyShooterController
+  projectileStrategyData: {fileID: 11400000, guid: e3cfc27f89afe479491042803ed9ef29, type: 2}
+  projectileSpawnPoints:
+  - {fileID: 1585180139735772904}
   - {fileID: 2008813238314938312}

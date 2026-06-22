@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e3a58123b131492783b5d080e14ae76, type: 3}
-  m_Name: BossProjectile_Spread
+  m_Name: Boss_ChaseProjectile
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileData
-  projectileName: Boss Spread
-  projectilePrefab: {fileID: 4489415941996475654, guid: 9f082fa9cb31342ea900d95c3e5dfd42, type: 3}
-  projectileSpeed: 3
+  projectileName: Boss Chase Projectile
+  projectilePrefab: {fileID: 4489415941996475654, guid: c6497b6ccefe240218717ae61c0b5de7, type: 3}
+  projectileSpeed: 2
   projectileDamageAmount: 1
-  projectileHealth: 5
-  projectileLifeTime: 10
+  projectileHealth: 2
+  projectileLifeTime: 5
   canBeShot: 1
-  projectileBehaviour: 1
+  projectileBehaviour: 0

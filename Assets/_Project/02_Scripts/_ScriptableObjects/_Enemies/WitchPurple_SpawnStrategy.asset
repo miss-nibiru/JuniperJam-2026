@@ -10,21 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 368631421e1924a2b878faef74ed1789, type: 3}
-  m_Name: FinalBoss_SpawnStrategy
+  m_Name: WitchPurple_SpawnStrategy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnGroupData
-  enemyData: {fileID: 11400000, guid: 4e84a93d09d424b4c839d1c4efa08afd, type: 2}
+  enemyData: {fileID: 11400000, guid: 49936556ceef64732a902830a5bbd0bb, type: 2}
   spawnPattern: 00000000
-  spawnCoordinate: 
+  spawnCoordinate: 0200000003000000
   spawnLocation: 1
   selectedGridCell:
-  - {x: 9, y: 10}
-  patternDirection: 1
+  - {x: 4, y: 8}
+  - {x: 4, y: 10}
+  - {x: 4, y: 12}
+  - {x: 4, y: 14}
+  - {x: 16, y: 8}
+  - {x: 16, y: 10}
+  - {x: 16, y: 12}
+  - {x: 16, y: 14}
+  patternDirection: 0
   clusterMovementType: 0
   groupHorizontalDistance: 0
   groupHorizontalSpeed: 0
   groupAdvanceSpeed: 0
-  amountToSpawn: 1
-  enemiesPerPattern: 1
+  amountToSpawn: 0
+  enemiesPerPattern: 0
   patternSpacing: 0
-  maxActiveOfType: 1
-  delayBetweenSpawns: 0
+  maxActiveOfType: 10
+  delayBetweenSpawns: 2

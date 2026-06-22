@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 368631421e1924a2b878faef74ed1789, type: 3}
-  m_Name: SpaceInvaders_Strategy
+  m_Name: MarshmallowSpaceInvaders_SpawnStrategy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnGroupData
   enemyData: {fileID: 11400000, guid: bf3f8a6fe1e144bcda427cfed62c6f28, type: 2}
   spawnPattern: 02000000

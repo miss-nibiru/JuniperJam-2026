@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc31fd152633a4cb3b168a8bc7d6d8f1, type: 3}
-  m_Name: MarshmallowLine_Enemy
+  m_Name: WitchRedStatic_Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: ClusterMarshmallows
-  enemyPrefab: {fileID: 8969623715672447508, guid: 87de66f273f544e46bb3196c42b8f952, type: 3}
-  maxHealth: 20
-  damageAmount: 1
-  moveSpeed: 2
-  movementType: 2
-  introRows: 4
-  introSpeed: 3
-  chaseDelay: 1
-  gridDestroyPadding: 1
+  enemyName: Witch Purple Chase Shoot
+  enemyPrefab: {fileID: 8969623715672447508, guid: df6e45b6d7e14438ab9cc87f89511494, type: 3}
+  maxHealth: 5
+  damageAmount: 0
+  moveSpeed: 0
+  leftRightDistance: 0
+  movementType: 3
+  introRows: 2
+  introSpeed: 2
+  chaseDelay: 0
+  gridDestroyPadding: 0
