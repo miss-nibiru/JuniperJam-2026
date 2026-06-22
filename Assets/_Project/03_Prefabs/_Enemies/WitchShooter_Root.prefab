@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8421583336076505678}
   - component: {fileID: 9113278737557883885}
   m_Layer: 0
-  m_Name: Fae_Sprite
+  m_Name: Witch_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 5915854646191786471}
   - component: {fileID: 2514278108096288670}
   m_Layer: 0
-  m_Name: ChasingFae_Root
+  m_Name: WitchShooter_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
