@@ -23,6 +23,7 @@ public class EnemyData : ScriptableObject
     [SerializeField] private int damageAmount;
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float leftRightDistance;
 
     [SerializeField] private EnemyMovementType movementType;
     
@@ -39,6 +40,7 @@ public class EnemyData : ScriptableObject
     public int DamageAmount => damageAmount;
 
     public float MoveSpeed => moveSpeed;
+    public float LeftRightDistance => leftRightDistance;
 
     public EnemyMovementType MovementType => movementType;
     

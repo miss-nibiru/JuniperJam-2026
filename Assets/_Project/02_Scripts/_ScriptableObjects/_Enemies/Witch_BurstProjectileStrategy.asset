@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdac1487a5ff54532b8f3f9211678867, type: 3}
-  m_Name: Witch_ProjectileStrategy
+  m_Name: Witch_BurstProjectileStrategy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectileStrategyData
-  projectileData: {fileID: 11400000, guid: cb550bde7df54447996c3a9dd8c0cfe3, type: 2}
-  shootingPattern: 0
+  projectileData: {fileID: 11400000, guid: 7ced3c880a8d94df585aa497d19bf9d6, type: 2}
+  shootingPattern: 1
   firstShotDelay: 1
   timeBetweenShots: 2
-  shotsPerBurst: 1
-  delayBetweenBurstShots: 0.15
+  shotsPerBurst: 5
+  delayBetweenBurstShots: 0.05
+  burstAngleSpread: 5
+  fanAngleSpread: 0

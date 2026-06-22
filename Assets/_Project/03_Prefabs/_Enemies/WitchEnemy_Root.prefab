@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2534546267995497941}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.967, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: e00599f426e8e4254ae5157737b70883, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a5ea8f331f5384a3fad5dd447199b86d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 3281762889756165187}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 0, z: 0}
+  m_LocalPosition: {x: 0.63, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   mainGrid: {fileID: 0}
-  enemyData: {fileID: 11400000, guid: f74b95242caa6430d921572cb89b77d4, type: 2}
+  enemyData: {fileID: 11400000, guid: 49936556ceef64732a902830a5bbd0bb, type: 2}
   playerTargetPoint: {fileID: 0}
 --- !u!114 &2770882581530625544
 MonoBehaviour:
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee665e0525e6f483088480dc5c8413a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooterController
-  projectileStrategyData: {fileID: 11400000, guid: edb4d0a27de26400e9c8ebcdcd9ce324, type: 2}
+  projectileStrategyData: {fileID: 11400000, guid: 697e9c176626749539670e8edb1bdc25, type: 2}
   projectileSpawnPoints:
   - {fileID: 4750358937849999820}
 --- !u!50 &5915854646191786471
@@ -251,5 +251,5 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1.39}
+  m_Size: {x: 1.5, y: 0.0001}
   m_Direction: 0

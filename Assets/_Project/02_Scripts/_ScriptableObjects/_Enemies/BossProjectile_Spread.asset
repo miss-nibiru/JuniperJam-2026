@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossProjectile_Spread
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileData
   projectileName: Boss Spread
-  projectilePrefab: {fileID: 4489415941996475654, guid: c6497b6ccefe240218717ae61c0b5de7, type: 3}
+  projectilePrefab: {fileID: 4489415941996475654, guid: 8c4788e5b3a6d4ca1bf5f07710ed6f0a, type: 3}
   projectileSpeed: 3
   projectileDamageAmount: 1
   projectileHealth: 5

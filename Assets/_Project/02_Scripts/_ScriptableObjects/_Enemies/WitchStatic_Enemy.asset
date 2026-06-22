@@ -17,7 +17,7 @@ MonoBehaviour:
   maxHealth: 3
   damageAmount: 1
   moveSpeed: 1
-  movementType: 5
+  movementType: 3
   introRows: 2
   introSpeed: 2
   chaseDelay: 0

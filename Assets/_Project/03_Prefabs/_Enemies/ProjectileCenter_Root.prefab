@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8803739779650512781}
   - component: {fileID: 5661653157416987661}
   m_Layer: 0
-  m_Name: WitchProjectile_Root
+  m_Name: ProjectileCenter_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,9 +140,9 @@ Transform:
   m_GameObject: {fileID: 6751212066410186223}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.811, y: -0.087, z: 0}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3174472318001756132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -193,9 +193,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4102c7357bd2c46b4b68286b6f1919b0, type: 3}
   m_Color: {r: 0.75441813, g: 0.15098791, b: 0.8207547, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -7,9 +7,6 @@ public class ProjectileData : ScriptableObject
     {
         Chase,
         Spread,
-        Spiral,
-        SpaceInvaders,
-        
     }
 
     [SerializeField] private string projectileName;

@@ -83,7 +83,21 @@ public class EnemyShooterController : MonoBehaviour
             {
                 if (!spawnPoint) continue;
 
-                ShootProjectileTowardPlayer(spawnPoint);
+                Vector3 directionToPlayer = (_playerTargetPoint.position - spawnPoint.position).normalized;
+
+                if (directionToPlayer == Vector3.zero)
+                {
+                    directionToPlayer = spawnPoint.up;
+                }
+
+                float randomAngle = Random.Range(
+                    -projectileStrategyData.BurstAngleSpread,
+                    projectileStrategyData.BurstAngleSpread
+                );
+
+                Vector3 projectileDirection = Quaternion.Euler(0f, 0f, randomAngle) * directionToPlayer;
+
+                ShootProjectileInDirection(spawnPoint, projectileDirection);
             }
 
             yield return new WaitForSeconds(projectileStrategyData.DelayBetweenBurstShots);

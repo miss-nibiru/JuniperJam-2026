@@ -14,6 +14,9 @@ public class EnemyController : MonoBehaviour
     private bool _canChase;
     private Coroutine _movementRoutine;
     
+    private Vector3 _startPosition;
+    private bool _movingSide;
+    
     //player health call here
     
     private int _currentHealth;
@@ -33,8 +36,43 @@ public class EnemyController : MonoBehaviour
             ChasePlayer();
         }
 
+        if (EnemyData.MovementType == EnemyData.EnemyMovementType.LeftRight)
+        {
+
+            MoveLeftRight();
+
+        }
+        
         CheckIfOutsideGrid();
 
+    }
+
+    private void MoveLeftRight()
+    {
+        float leftLimit = _startPosition.x - EnemyData.LeftRightDistance;
+        float rightLimit = _startPosition.x + EnemyData.LeftRightDistance;
+
+        Vector3 targetPosition = transform.position;
+
+        if (_movingSide)
+        {
+            targetPosition.x = rightLimit;
+        }
+        else
+        {
+            targetPosition.x = leftLimit;
+        }
+
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPosition,
+            EnemyData.MoveSpeed * Time.deltaTime
+        );
+
+        if (Vector3.Distance(transform.position, targetPosition) <= 0.05f)
+        {
+            _movingSide = !_movingSide;
+        }
     }
 
     private void CheckIfOutsideGrid()
@@ -49,13 +87,14 @@ public class EnemyController : MonoBehaviour
 
     public void InitializeEnemy(EnemyData enemy, MainGridManager grid, Transform playerTarget)
     {
-        this.enemyData = enemy;
-        this.mainGrid = grid;
-        this.playerTargetPoint = playerTarget;
+        enemyData = enemy;
+        mainGrid = grid;
+        playerTargetPoint = playerTarget;
+        _startPosition = transform.position;
         
-        if (!this.enemyData) return;
+        if (!enemyData) return;
 
-        if (this.enemyData.MovementType == EnemyData.EnemyMovementType.Chase)
+        if (enemyData.MovementType == EnemyData.EnemyMovementType.Chase)
         {
             if (_movementRoutine != null)
             {

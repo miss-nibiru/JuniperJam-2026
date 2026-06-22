@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e3a58123b131492783b5d080e14ae76, type: 3}
-  m_Name: BossProjectile_Fan
+  m_Name: Witch_BurstProjectile
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileData
-  projectileName: Boss Fan Attack
-  projectilePrefab: {fileID: 4489415941996475654, guid: 8c4788e5b3a6d4ca1bf5f07710ed6f0a, type: 3}
-  projectileSpeed: 2
+  projectileName: Witch Burst Projectiles
+  projectilePrefab: {fileID: 4489415941996475654, guid: fdcca2a410edd412397a8da5198f1fd1, type: 3}
+  projectileSpeed: 1
   projectileDamageAmount: 1
-  projectileHealth: 2
+  projectileHealth: 1
   projectileLifeTime: 10
   canBeShot: 1
   projectileBehaviour: 1
