@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnGroupData
   enemyData: {fileID: 11400000, guid: 4e84a93d09d424b4c839d1c4efa08afd, type: 2}
   spawnPattern: 00000000
-  spawnCoordinate: 00000000
+  spawnCoordinate: 
   spawnLocation: 1
   selectedGridCell:
-  - {x: 11, y: 18}
+  - {x: 9, y: 10}
   patternDirection: 1
   clusterMovementType: 0
   groupHorizontalDistance: 0

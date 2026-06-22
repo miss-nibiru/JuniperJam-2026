@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 5915854646191786471}
   - component: {fileID: 2514278108096288670}
   m_Layer: 0
-  m_Name: WitchShooter_Root
+  m_Name: WitchEnemy_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooterController
   projectileStrategyData: {fileID: 11400000, guid: edb4d0a27de26400e9c8ebcdcd9ce324, type: 2}
-  projectileSpawnPoints: []
+  projectileSpawnPoints:
+  - {fileID: 4750358937849999820}
 --- !u!50 &5915854646191786471
 Rigidbody2D:
   serializedVersion: 5

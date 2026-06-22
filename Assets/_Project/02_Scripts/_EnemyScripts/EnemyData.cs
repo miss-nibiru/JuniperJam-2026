@@ -12,8 +12,6 @@ public class EnemyData : ScriptableObject
         None,
         Chase,
         LeftRight,
-        Spiral,
-        Spline,
         StaticShooter,
         Boss
     }
