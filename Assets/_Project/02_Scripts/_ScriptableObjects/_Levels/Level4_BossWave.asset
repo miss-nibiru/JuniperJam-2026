@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7860acc16f2ac47339e0e69e582445d0, type: 2}
   - {fileID: 11400000, guid: e6faf92b1bc4543dc90bef943a3d1c43, type: 2}
   mustClearAllEnemiesToFinish: 1
-  spawnDelay: 3
+  spawnDelay: 1

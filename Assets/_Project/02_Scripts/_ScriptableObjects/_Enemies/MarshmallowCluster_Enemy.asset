@@ -16,10 +16,10 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8969623715672447508, guid: 87de66f273f544e46bb3196c42b8f952, type: 3}
   maxHealth: 5
   damageAmount: 2
-  moveSpeed: 3
+  moveSpeed: 2.5
   leftRightDistance: 0
   movementType: 1
-  introRows: 9
-  introSpeed: 5
+  introRows: 2
+  introSpeed: 4
   chaseDelay: 5
   gridDestroyPadding: 0

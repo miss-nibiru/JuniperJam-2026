@@ -7,8 +7,7 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private EnemyData enemyData;
-    [SerializeField] private EnemySpawnGroupData testSpawnGroupData;
+    
     [SerializeField] private MainGridManager mainGrid;
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private Transform playerTarget;

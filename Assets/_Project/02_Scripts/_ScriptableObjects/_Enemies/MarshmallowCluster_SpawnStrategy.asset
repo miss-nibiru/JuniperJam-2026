@@ -15,15 +15,19 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 2011a32e39ba04b949f9920735b09597, type: 2}
   spawnPattern: 01000000
   spawnCoordinate: 0300000002000000
-  spawnLocation: 0
-  selectedGridCell: []
-  patternDirection: 1
+  spawnLocation: 1
+  selectedGridCell:
+  - {x: 3, y: 10}
+  - {x: 3, y: 19}
+  - {x: 10, y: 20}
+  - {x: 10, y: 3}
+  patternDirection: 0
   clusterMovementType: 0
   groupHorizontalDistance: 0
   groupHorizontalSpeed: 0
   groupAdvanceSpeed: 0
-  amountToSpawn: 1
-  enemiesPerPattern: 4
-  patternSpacing: 1
-  maxActiveOfType: 8
-  delayBetweenSpawns: 8
+  amountToSpawn: 200
+  enemiesPerPattern: 5
+  patternSpacing: 2
+  maxActiveOfType: 100
+  delayBetweenSpawns: 1

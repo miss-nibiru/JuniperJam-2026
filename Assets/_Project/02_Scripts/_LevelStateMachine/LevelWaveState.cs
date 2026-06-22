@@ -14,6 +14,11 @@ public class LevelWaveState : ILevelState
     private float _currentWaveTimer;
     private float _currentSpawnTimer;
     private bool _levelFinished;
+    
+    // i need someway to have delay on spawn for each group?
+
+    private float[] _groupCooldowns;
+    private int[] _groupSpawnAmounts;
 
     public LevelWaveState(
         LevelWaveData levelWaveData,
@@ -34,6 +39,14 @@ public class LevelWaveState : ILevelState
         _currentSpawnTimer = _levelWaveData.SpawnDelay;
         _levelFinished = false;
 
+        EnemySpawnGroupData[] enemyGroups = _levelWaveData.EnemyGroups;
+
+        if (enemyGroups != null)
+        {
+            _groupCooldowns = new float[enemyGroups.Length];
+            _groupSpawnAmounts = new int[enemyGroups.Length];
+        }
+
         Debug.Log("Wave started: " + _levelWaveData.LevelName);
     }
     
@@ -41,6 +54,7 @@ public class LevelWaveState : ILevelState
     {
         if (_levelFinished) return;
         _currentWaveTimer -= Time.deltaTime; //countdown wave timer --- should pause before the wave starts
+        UpdateGroupCooldowns();
 
         if (_currentWaveTimer > 0) // if the level still has timer available, more things keep spawning
         {
@@ -48,20 +62,7 @@ public class LevelWaveState : ILevelState
 
             if (_currentSpawnTimer <= 0)
             {
-                EnemySpawnGroupData[] enemyGroups = _levelWaveData.EnemyGroups;
-
-                if (enemyGroups == null || enemyGroups.Length == 0)
-                {
-                    Debug.LogWarning("Assign the enemies to the wave!! " + _levelWaveData.LevelName);
-                    _currentSpawnTimer = _levelWaveData.SpawnDelay;
-                    return;
-                }
-
-                int randomEnemyGroupIndex = Random.Range(0, enemyGroups.Length);
-                EnemySpawnGroupData chosenEnemyGroup = enemyGroups[randomEnemyGroupIndex];
-                Debug.Log("Spawning enemies now! " + chosenEnemyGroup.name);
-
-                _enemySpawner.SpawnEnemy(chosenEnemyGroup);
+                TrySpawnEnemyCluster();
                 _currentSpawnTimer = _levelWaveData.SpawnDelay;
 
             }
@@ -84,11 +85,73 @@ public class LevelWaveState : ILevelState
         {
             FinishWave();
             Debug.Log("Wave finished: " + _levelWaveData.LevelName);
-            return;
         }
         
-        Debug.Log(_levelWaveData.LevelName);
+    }
+
+    private void TrySpawnEnemyCluster()
+    {
+        EnemySpawnGroupData[] enemyGroups = _levelWaveData.EnemyGroups;
+
+        if (enemyGroups == null || enemyGroups.Length == 0) FinishWave();
+        int chosenGroupIndex = GetRandomAvailableGroupIndex(enemyGroups);
+        if(chosenGroupIndex == -1) return;
         
+        EnemySpawnGroupData chosenEnemyGroup = enemyGroups [chosenGroupIndex];
+        _enemySpawner.SpawnEnemy(chosenEnemyGroup);
+        _groupSpawnAmounts[chosenGroupIndex]++;
+
+        if (chosenEnemyGroup.DelayBetweenSpawns > 0)
+        {
+            _groupCooldowns[chosenGroupIndex] = chosenEnemyGroup.DelayBetweenSpawns;
+        }
+
+    }
+    
+    private int GetRandomAvailableGroupIndex(EnemySpawnGroupData[] enemyGroups)
+    {
+        int[] availableGroupIndexes = new int[enemyGroups.Length];
+        int availableCount = 0;
+
+        for (int i = 0; i < enemyGroups.Length; i++)
+        {
+            EnemySpawnGroupData enemyGroup = enemyGroups[i];
+
+            if (!enemyGroup) continue;
+            if (_groupCooldowns[i] > 0) continue;
+            if (!_enemyManager.CanSpawnEnemy(enemyGroup)) continue;
+
+            bool hasSpawnLimit = enemyGroup.AmountToSpawn > 0;
+
+            if (hasSpawnLimit && _groupSpawnAmounts[i] >= enemyGroup.AmountToSpawn)
+            {
+                continue;
+            }
+
+            availableGroupIndexes[availableCount] = i;
+            availableCount++;
+        }
+
+        if (availableCount == 0)
+        {
+            return -1;
+        }
+
+        int randomAvailableIndex = Random.Range(0, availableCount);
+        return availableGroupIndexes[randomAvailableIndex];
+    }
+
+    private void UpdateGroupCooldowns()
+    {
+        if (_groupCooldowns == null) return;
+
+        for (int i = 0; i < _groupCooldowns.Length; i++)
+        {
+            if (_groupCooldowns[i] > 0)
+            {
+                _groupCooldowns[i] -= Time.deltaTime;
+            }
+        }
     }
 
     private void FinishWave()

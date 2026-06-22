@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DarkFaeChase_SpawnStrategy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnGroupData
   enemyData: {fileID: 11400000, guid: f74b95242caa6430d921572cb89b77d4, type: 2}
-  spawnPattern: 0000000001000000
+  spawnPattern: 0000000000000000
   spawnCoordinate: 01000000000000000200000003000000
   spawnLocation: 1
   selectedGridCell:
@@ -26,8 +26,8 @@ MonoBehaviour:
   groupHorizontalDistance: 3
   groupHorizontalSpeed: 2
   groupAdvanceSpeed: 1
-  amountToSpawn: 3
+  amountToSpawn: 50
   enemiesPerPattern: 3
   patternSpacing: 2
-  maxActiveOfType: 6
-  delayBetweenSpawns: 7
+  maxActiveOfType: 10
+  delayBetweenSpawns: 1
