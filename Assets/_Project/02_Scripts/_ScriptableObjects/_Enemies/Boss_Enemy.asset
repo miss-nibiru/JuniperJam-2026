@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Final Boss Enemy
   enemyPrefab: {fileID: 8846461366675831921, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
-  maxHealth: 100
+  maxHealth: 300
   damageAmount: 1
   moveSpeed: 1
   leftRightDistance: 3

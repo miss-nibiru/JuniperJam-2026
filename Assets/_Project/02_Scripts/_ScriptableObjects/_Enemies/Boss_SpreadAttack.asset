@@ -17,6 +17,6 @@ MonoBehaviour:
   firstShotDelay: 0
   timeBetweenShots: 6
   shotsPerBurst: 7
-  delayBetweenBurstShots: 2
+  delayBetweenBurstShots: 0.05
   burstAngleSpread: 45
   fanAngleSpread: 0

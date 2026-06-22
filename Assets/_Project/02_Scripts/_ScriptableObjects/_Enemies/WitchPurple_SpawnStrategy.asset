@@ -34,4 +34,4 @@ MonoBehaviour:
   enemiesPerPattern: 0
   patternSpacing: 0
   maxActiveOfType: 10
-  delayBetweenSpawns: 2
+  delayBetweenSpawns: 8

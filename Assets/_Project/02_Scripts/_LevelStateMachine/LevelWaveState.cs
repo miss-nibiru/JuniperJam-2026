@@ -74,10 +74,10 @@ public class LevelWaveState : ILevelState
         
         if (!_levelWaveData.MustClearAllEnemiesToFinish)
         {
+            _enemyManager.RemoveAllEnemies();
             FinishWave();
             Debug.Log("Wave finished: " + _levelWaveData.LevelName);
             return;
-            
         }
 
         if (_enemyManager.ActiveEnemyCount == 0)
