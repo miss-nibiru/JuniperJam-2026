@@ -1777,7 +1777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1344443737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2452,7 +2452,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637331380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.40673664, w: 0.9135455}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -2467,7 +2467,7 @@ RectTransform:
   - {fileID: 1249466418}
   - {fileID: 1584990760}
   m_Father: {fileID: 1344443737}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 48}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2487,6 +2487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpinningWheel
   rotatePower: 1000
   stopPower: 550
+  numberOfWeapons: 3
+  angleOffsetForWheel: 0
   weaponChoiceWon: 0
 --- !u!50 &1637331383
 Rigidbody2D:
