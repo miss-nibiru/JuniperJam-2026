@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float lifetime;
-    [SerializeField] private int bulletDamage;
+    [SerializeField] private int bulletDamage = 1;
 
     private Rigidbody2D rb;
 
@@ -23,7 +23,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        EnemyController enemy = collision.GetComponent<EnemyController>();
+        Hit(collision.gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Hit(collision.gameObject);
+    }
+
+    private void Hit(GameObject hitObject)
+    {
+        EnemyController enemy = hitObject.GetComponent<EnemyController>();
 
         if (enemy)
         {
@@ -32,7 +42,7 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        EnemyProjectileController enemyProjectile = collision.GetComponent<EnemyProjectileController>(); //if it collides with a projectile with the main brain attached
+        EnemyProjectileController enemyProjectile = hitObject.GetComponent<EnemyProjectileController>(); //if it collides with a projectile with the main brain attached
 
         if (enemyProjectile)
         {
@@ -41,6 +51,5 @@ public class Bullet : MonoBehaviour
             return;
             
         }
-
     }
 }

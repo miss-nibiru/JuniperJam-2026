@@ -16,8 +16,6 @@ public class EnemyController : MonoBehaviour
     private Vector3 _startPosition;
     private bool _movingSide;
     
-    //player health call here
-    
     private int _currentHealth;
 
     public EnemyData EnemyData => enemyData;
@@ -168,8 +166,9 @@ public class EnemyController : MonoBehaviour
     {
         if(!other.CompareTag("Player")) return;
 
-        //PlayerHealth playerHealth = other.GetComponent<PlayerHealth>(); --- when Allan gets the script ready, connect to this one
-        //take damage by enemydata.damageamount
+        PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+        if (playerHealth) playerHealth.TakeDamage(enemyData.DamageAmount);
+
         StopMovementRoutine();
         Destroy(gameObject);
 
