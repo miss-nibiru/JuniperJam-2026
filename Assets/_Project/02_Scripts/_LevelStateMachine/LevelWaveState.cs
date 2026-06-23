@@ -93,7 +93,12 @@ public class LevelWaveState : ILevelState
     {
         EnemySpawnGroupData[] enemyGroups = _levelWaveData.EnemyGroups;
 
-        if (enemyGroups == null || enemyGroups.Length == 0) FinishWave();
+        if (enemyGroups == null || enemyGroups.Length == 0)
+        {
+            FinishWave();
+            return;
+        }
+        
         int chosenGroupIndex = GetRandomAvailableGroupIndex(enemyGroups);
         if(chosenGroupIndex == -1) return;
         
