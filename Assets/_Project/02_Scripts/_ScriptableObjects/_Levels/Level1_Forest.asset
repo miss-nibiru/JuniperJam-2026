@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level1_Forest
   m_EditorClassIdentifier: Assembly-CSharp::LevelWaveData
   levelName: Level 1 - Forest
-  waveTime: 10
+  waveTime: 20
   enemyGroups:
   - {fileID: 11400000, guid: 90af8277cd61349429cc86ade20fb71a, type: 2}
   - {fileID: 11400000, guid: 4af79eab14c844789b74593fba44ec3b, type: 2}
