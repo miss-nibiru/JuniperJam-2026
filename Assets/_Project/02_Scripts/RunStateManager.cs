@@ -62,7 +62,9 @@ public class RunStateManager : MonoBehaviour
     {
         cursorManager?.SetShootingCursorEnabled(enabled);
         gunController?.SetShootingEnabled(enabled);
-        if(!enabled) enemyManager?.RemoveAllEnemies();
+        if(!enabled) enemyManager?.
+            RemoveAllEnemies();
+            ClearEnemyProjectiles();
     }
     
     private void HandleSpinFinished(SpinningWheel.WeaponChoice weaponChoice)
@@ -122,7 +124,18 @@ public class RunStateManager : MonoBehaviour
         GetUIManager()?.ShowWinCanvas(enabled);
     }
     
+    private void ClearEnemyProjectiles()
+    {
+        EnemyProjectileController[] enemyProjectiles = FindObjectsByType<EnemyProjectileController>(FindObjectsSortMode.None);
 
+        foreach (EnemyProjectileController projectile in enemyProjectiles)
+        {
+            if (!projectile) continue;
+
+            Destroy(projectile.gameObject);
+        }
+    }
+    
     private UIManager GetUIManager()
     {
         if (uiManager) return uiManager;

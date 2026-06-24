@@ -15,6 +15,9 @@ public class LevelWaveState : ILevelState
     private float _currentSpawnTimer;
     private bool _levelFinished;
     
+    private bool _bossHasSpawned;
+    private bool _thisWaveHasBoss;
+    
     // i need someway to have delay on spawn for each group?
 
     private float[] _groupCooldowns;
@@ -40,18 +43,18 @@ public class LevelWaveState : ILevelState
         _levelFinished = false;
 
         EnemySpawnGroupData[] enemyGroups = _levelWaveData.EnemyGroups;
+        _bossHasSpawned = false;
+        _thisWaveHasBoss = WaveHasBoss(enemyGroups);
 
         if (enemyGroups == null || enemyGroups.Length == 0)
         {
-            Debug.Log("No enemy groups found in: " + _levelWaveData.LevelName);
             FinishWave();
             return;
         }
 
         _groupCooldowns = new float[enemyGroups.Length];
         _groupSpawnAmounts = new int[enemyGroups.Length];
-
-        Debug.Log("Wave started: " + _levelWaveData.LevelName);
+        
     }
     
     public void ExecuteLevel()
@@ -59,6 +62,14 @@ public class LevelWaveState : ILevelState
         if (_levelFinished) return;
         _currentWaveTimer -= Time.deltaTime; //countdown wave timer --- should pause before the wave starts
         UpdateGroupCooldowns();
+        
+        if (_thisWaveHasBoss && _bossHasSpawned && _enemyManager.ActiveBossCount == 0)
+        {
+            _enemyManager.RemoveAllEnemies();
+            FinishWave();
+            Debug.Log("Boss defeated. Finishing level: " + _levelWaveData.LevelName);
+            return;
+        }
 
         if (_currentWaveTimer > 0) // if the level still has timer available, more things keep spawning
         {
@@ -81,15 +92,12 @@ public class LevelWaveState : ILevelState
         {
             _enemyManager.RemoveAllEnemies();
             FinishWave();
-            Debug.Log("Wave finished: " + _levelWaveData.LevelName);
+            
             return;
         }
 
-        if (_enemyManager.ActiveEnemyCount == 0)
-        {
-            FinishWave();
-            Debug.Log("Wave finished: " + _levelWaveData.LevelName);
-        }
+        if (_enemyManager.ActiveEnemyCount == 0) FinishWave();
+        
         
     }
 
@@ -107,13 +115,15 @@ public class LevelWaveState : ILevelState
         if(chosenGroupIndex == -1) return;
         
         EnemySpawnGroupData chosenEnemyGroup = enemyGroups [chosenGroupIndex];
+        if (chosenEnemyGroup.EnemyData.MovementType == EnemyData.EnemyMovementType.Boss) _bossHasSpawned = true; //this connects to the boss movement type and detects if boss or not
+        
+        
         _enemySpawner.SpawnEnemy(chosenEnemyGroup);
         _groupSpawnAmounts[chosenGroupIndex]++;
 
         if (chosenEnemyGroup.DelayBetweenSpawns > 0)
-        {
             _groupCooldowns[chosenGroupIndex] = chosenEnemyGroup.DelayBetweenSpawns;
-        }
+        
 
     }
     
@@ -132,19 +142,14 @@ public class LevelWaveState : ILevelState
 
             bool hasSpawnLimit = enemyGroup.AmountToSpawn > 0;
 
-            if (hasSpawnLimit && _groupSpawnAmounts[i] >= enemyGroup.AmountToSpawn)
-            {
-                continue;
-            }
+            if (hasSpawnLimit && _groupSpawnAmounts[i] >= enemyGroup.AmountToSpawn) continue;
+            
 
             availableGroupIndexes[availableCount] = i;
             availableCount++;
         }
 
-        if (availableCount == 0)
-        {
-            return -1;
-        }
+        if (availableCount == 0) return -1;
 
         int randomAvailableIndex = Random.Range(0, availableCount);
         return availableGroupIndexes[randomAvailableIndex];
@@ -156,11 +161,26 @@ public class LevelWaveState : ILevelState
 
         for (int i = 0; i < _groupCooldowns.Length; i++)
         {
-            if (_groupCooldowns[i] > 0)
+            if (_groupCooldowns[i] > 0) _groupCooldowns[i] -= Time.deltaTime;
+        }
+    }
+    
+    private bool WaveHasBoss(EnemySpawnGroupData[] enemyGroups)
+    {
+        if (enemyGroups == null) return false;
+
+        foreach (EnemySpawnGroupData enemyGroup in enemyGroups)
+        {
+            if (!enemyGroup) continue;
+            if (!enemyGroup.EnemyData) continue;
+
+            if (enemyGroup.EnemyData.MovementType == EnemyData.EnemyMovementType.Boss)
             {
-                _groupCooldowns[i] -= Time.deltaTime;
+                return true;
             }
         }
+
+        return false;
     }
 
     private void FinishWave()

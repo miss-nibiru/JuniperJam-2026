@@ -15,6 +15,8 @@ MonoBehaviour:
   levelName: Level 1 - Forest
   waveTime: 20
   enemyGroups:
-  - {fileID: 11400000, guid: e6faf92b1bc4543dc90bef943a3d1c43, type: 2}
+  - {fileID: 11400000, guid: 4af79eab14c844789b74593fba44ec3b, type: 2}
+  - {fileID: 11400000, guid: 663fcffba15ef48f2a253a0facd47c21, type: 2}
+  - {fileID: 11400000, guid: b5f5d47019d9b4d7b8068f68ed5c550e, type: 2}
   mustClearAllEnemiesToFinish: 0
-  spawnDelay: 0.5
+  spawnDelay: 0.6

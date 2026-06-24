@@ -56,6 +56,29 @@ public class EnemyManager : MonoBehaviour
         
     }
     
+    public int ActiveBossCount // adding this new one so once the boss dies, the level ends and no more things can spawn
+    {
+        get
+        {
+            _activeEnemies.RemoveAll(enemy => !enemy);
+
+            int count = 0;
+
+            foreach (EnemyController enemy in _activeEnemies)
+            {
+                if (!enemy) continue;
+                if (!enemy.EnemyData) continue;
+
+                if (enemy.EnemyData.MovementType == EnemyData.EnemyMovementType.Boss)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+    }
+    
 
     public void DetectEnemy(EnemyController enemy)
     {

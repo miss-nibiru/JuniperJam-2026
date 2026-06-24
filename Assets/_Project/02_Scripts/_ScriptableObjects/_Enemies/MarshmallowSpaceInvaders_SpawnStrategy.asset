@@ -22,11 +22,11 @@ MonoBehaviour:
   - {x: 0, y: 20}
   patternDirection: 0
   clusterMovementType: 1
-  groupHorizontalDistance: 1
-  groupHorizontalSpeed: 1
-  groupAdvanceSpeed: 1
+  groupHorizontalDistance: 2
+  groupHorizontalSpeed: 1.3
+  groupAdvanceSpeed: 0.75
   amountToSpawn: 500
-  enemiesPerPattern: 20
+  enemiesPerPattern: 15
   patternSpacing: 0.8
   maxActiveOfType: 100
   delayBetweenSpawns: 5
