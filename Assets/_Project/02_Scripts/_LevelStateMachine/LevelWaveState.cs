@@ -41,11 +41,15 @@ public class LevelWaveState : ILevelState
 
         EnemySpawnGroupData[] enemyGroups = _levelWaveData.EnemyGroups;
 
-        if (enemyGroups != null)
+        if (enemyGroups == null || enemyGroups.Length == 0)
         {
-            _groupCooldowns = new float[enemyGroups.Length];
-            _groupSpawnAmounts = new int[enemyGroups.Length];
+            Debug.Log("No enemy groups found in: " + _levelWaveData.LevelName);
+            FinishWave();
+            return;
         }
+
+        _groupCooldowns = new float[enemyGroups.Length];
+        _groupSpawnAmounts = new int[enemyGroups.Length];
 
         Debug.Log("Wave started: " + _levelWaveData.LevelName);
     }

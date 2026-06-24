@@ -25,7 +25,7 @@ public class RunStateManager : MonoBehaviour
         if (levelStateMachine)
         {
             levelStateMachine.LevelComplete += HandleLevelCompleted;
-            levelStateMachine.LevelComplete += HandleAllLevelsCompleted;
+            levelStateMachine.AllLevelsComplete += HandleAllLevelsCompleted;
         }
     }
 
@@ -35,7 +35,7 @@ public class RunStateManager : MonoBehaviour
         if (levelStateMachine)
         {
             levelStateMachine.LevelComplete -= HandleLevelCompleted;
-            levelStateMachine.LevelComplete -= HandleAllLevelsCompleted;
+            levelStateMachine.AllLevelsComplete -= HandleAllLevelsCompleted;
         }
     }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int maxHealth = 5;
     [SerializeField] private RunStateManager runStateManager;
 
     private int _currentHealth;
@@ -36,8 +36,8 @@ public class PlayerHealth : MonoBehaviour
         if(!_isDead) return;
         _isDead = true;
 
-        //if (runStateManager) runStateManager.GameOver(); // player getting destroyed will be handled by the state manager or it will create nulls
-        //else Debug.Log("Player died - But theres manager!!");
+        if (runStateManager) runStateManager.GameOver(); // player getting destroyed will be handled by the state manager or it will create nulls
+        else Debug.Log("Player died - But theres manager!!");
         
     }
 }
