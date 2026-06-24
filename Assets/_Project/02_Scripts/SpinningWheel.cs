@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -9,7 +8,7 @@ public class SpinningWheel : MonoBehaviour
     
     [SerializeField] private float stopPower;
 
-    [SerializeField] private int numberOfWeapons;
+    [SerializeField] private int numberOfWeapons = 3;
 
     [SerializeField] private float angleOffsetForWheel;
     
@@ -42,16 +41,24 @@ public class SpinningWheel : MonoBehaviour
 
     private void Update()
     {
-        if (rb.angularVelocity > 0)
+        if (inSpin && rb.angularVelocity > 0)
         {
             rb.angularVelocity -= stopPower * Time.deltaTime;
+
+            if (rb.angularVelocity < 0)
+            {
+                rb.angularVelocity = 0;
+            }
+
             hasStartedSpinning = true;
         }
+
         if (rb.angularVelocity <= 0 && inSpin && hasStartedSpinning) 
         {
             finalAngle = transform.rotation.eulerAngles.z;
             GetWeaponChoice();
             inSpin = false;
+            hasStartedSpinning = false;
             SpinFinished?.Invoke(weaponChoiceWon);
         }
     }
@@ -60,75 +67,39 @@ public class SpinningWheel : MonoBehaviour
     {
         if (!inSpin)
         {
-            rb.AddTorque(rotatePower * UnityEngine.Random.Range(1f, 2f));
+            rb.angularVelocity = rotatePower * UnityEngine.Random.Range(1f, 2f);
+            hasStartedSpinning = false;
             inSpin = true;
         }
     }
 
-    /*private void GetWeaponChoice()
+    private void GetWeaponChoice()
     {
-        float rotation = transform.eulerAngles.z;
+        angleSpacingBetweenEachWeapon = 360f / numberOfWeapons;
+        float halfAngleSpacing = angleSpacingBetweenEachWeapon / 2f;
+        float angleToCheck = finalAngle + angleOffsetForWheel;
 
-        if (rotation > -60f && rotation < 60f)
+        angleToCheck %= 360f;
+
+        if (angleToCheck < 0f)
+        {
+            angleToCheck += 360f;
+        }
+
+        if (angleToCheck <= halfAngleSpacing || angleToCheck > 360f - halfAngleSpacing)
         {
             weaponChoiceWon = WeaponChoice.Shotgun;
         }
-        else if (rotation > 60f && rotation < 180f)
+        else if (angleToCheck <= halfAngleSpacing + angleSpacingBetweenEachWeapon)
         {
             weaponChoiceWon = WeaponChoice.SingleShotShotgun;
         }
-        else if (rotation > 180f && rotation < 300f)
+        else
         {
             weaponChoiceWon = WeaponChoice.MachineGun;
         }
-    }*/
 
-    // Whatever number I get for angle, modulus 360- subtract offset then do modulus
-    // take that angle, pin it to one of the
-
-    private void GetWeaponChoice()
-    {
-        angleSpacingBetweenEachWeapon = 360 / (numberOfWeapons + 1);
-        int amount = Enum.GetValues(typeof(WeaponChoice)).Length;
-        int weapon = (int)(finalAngle / angleSpacingBetweenEachWeapon);
-        Debug.Log($"Angle is {finalAngle} with a spacing of {angleSpacingBetweenEachWeapon} and amount is {amount} and weapon is {weapon}");
-        //switch (numberOfWeapons - 1)
-        //{
-        //    case 0:
-        //        if (finalAngle > 0f && finalAngle < angleSpacingBetweenEachWeapon)
-        //        {
-
-        //        }
-        //        break;
-        //    case 1:
-        //        if (finalAngle > angleSpacingBetweenEachWeapon)
-        //        {
-
-        //        }
-        //        break;
-        //    case 2:
-        //        if (finalAngle)
-        //        {
-
-        //        }
-        //        break;
-        //    case 3:
-        //        if (finalAngle)
-        //        {
-
-        //        }
-        //        break;
-        //    case 4:
-        //        if (finalAngle)
-        //        {
-
-        //        }
-        //        break;
-        //}
-        //if (finalAngle)
-        //{
-
-        //}
+        Debug.Log($"Angle is {finalAngle} and weapon is {weaponChoiceWon}");
     }
     
 }
