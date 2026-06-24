@@ -6,6 +6,7 @@ public class GunController : MonoBehaviour
 {
     private bool isHoldingShoot;
     private float timeThatShootDelayWillBeOver;
+    private Coroutine shootingRoutine;
 
     [SerializeField] private GunBase shotgun;
     [SerializeField] private GunBase machineGun;
@@ -13,6 +14,7 @@ public class GunController : MonoBehaviour
 
     private bool shootingEnabled;
     public GunBase weaponBeingUsed;
+    private SpinningWheel.WeaponChoice currentWeaponChoice = SpinningWheel.WeaponChoice.None;
 
     /*public enum CurrentWeapon
     {
@@ -42,24 +44,39 @@ public class GunController : MonoBehaviour
     {
         if (context.performed && shootingEnabled)
         {
+            if (isHoldingShoot) return;
+
             isHoldingShoot = true;
-            StartCoroutine(KeepShooting());
+            shootingRoutine = StartCoroutine(KeepShooting());
         }
 
         if (context.canceled)
         {
             isHoldingShoot = false;
+
+            if (shootingRoutine != null)
+            {
+                StopCoroutine(shootingRoutine);
+                shootingRoutine = null;
+            }
         }
     }
 
     public IEnumerator KeepShooting()
     {
-        while (isHoldingShoot && Time.time > timeThatShootDelayWillBeOver)
+        while (isHoldingShoot)
         {
-            weaponBeingUsed.Shoot(weaponBeingUsed.bulletPrefab);
-            timeThatShootDelayWillBeOver = Time.time + weaponBeingUsed.shootDelay;
-            yield return new WaitForSeconds(weaponBeingUsed.shootDelay);
+            if (weaponBeingUsed && Time.time > timeThatShootDelayWillBeOver)
+            {
+                weaponBeingUsed.Shoot(weaponBeingUsed.bulletPrefab);
+                AudioManager.Instance?.PlayWeaponShot(currentWeaponChoice);
+                timeThatShootDelayWillBeOver = Time.time + weaponBeingUsed.shootDelay;
+            }
+
+            yield return null;
         }
+
+        shootingRoutine = null;
     }
 
     public void SetShootingEnabled(bool enabled)
@@ -71,11 +88,20 @@ public class GunController : MonoBehaviour
         else
         {
             shootingEnabled = false;
+            isHoldingShoot = false;
+
+            if (shootingRoutine != null)
+            {
+                StopCoroutine(shootingRoutine);
+                shootingRoutine = null;
+            }
         }
     }
 
     public void SelectWeapon(SpinningWheel.WeaponChoice weaponChoice)
     {
+        currentWeaponChoice = weaponChoice;
+
         switch (weaponChoice)
         {
             case SpinningWheel.WeaponChoice.Shotgun:

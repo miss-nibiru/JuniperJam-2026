@@ -59,6 +59,7 @@ public class SpinningWheel : MonoBehaviour
             GetWeaponChoice();
             inSpin = false;
             hasStartedSpinning = false;
+            AudioManager.Instance?.PlaySpinFinished();
             SpinFinished?.Invoke(weaponChoiceWon);
         }
     }
@@ -70,6 +71,7 @@ public class SpinningWheel : MonoBehaviour
             rb.angularVelocity = rotatePower * UnityEngine.Random.Range(1f, 2f);
             hasStartedSpinning = false;
             inSpin = true;
+            AudioManager.Instance?.PlaySpinStart();
         }
     }
 
