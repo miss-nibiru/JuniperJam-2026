@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using System;
 
 /// <summary>
 /// controls all enemy behaviours and strategies - feeds from enemydata and talks to enemy manager i think?
 /// </summary>
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IHealthBars
 {
     [SerializeField] private MainGridManager mainGrid;
     [SerializeField] private EnemyData enemyData;
@@ -17,6 +18,11 @@ public class EnemyController : MonoBehaviour
     private bool _movingSide;
     
     private int _currentHealth;
+    
+    // interface stuff
+    public int CurrentHealth => _currentHealth;
+    public int MaxHealth => enemyData ? enemyData.MaxHealth : 0;
+    public event Action<int, int> HealthChanged;
 
     public EnemyData EnemyData => enemyData;
 
@@ -88,6 +94,9 @@ public class EnemyController : MonoBehaviour
         mainGrid = grid;
         playerTargetPoint = playerTarget;
         _startPosition = transform.position;
+        
+        _currentHealth = enemyData.MaxHealth;
+        HealthChanged?.Invoke(_currentHealth, MaxHealth);
         
         if (!enemyData) return;
 
@@ -176,12 +185,16 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        
         _currentHealth -= damageAmount;
-
+        _currentHealth = Mathf.Clamp(_currentHealth,0,MaxHealth);
+        HealthChanged?.Invoke(_currentHealth, MaxHealth);
         if (_currentHealth <= 0)
         {
+            //death animation here
             DieBish();
         }
+        
     }
 
     private void DieBish()
