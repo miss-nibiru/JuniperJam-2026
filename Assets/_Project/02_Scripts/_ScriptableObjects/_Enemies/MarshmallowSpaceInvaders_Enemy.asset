@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: SpaceInvaders Marshmallows
   enemyPrefab: {fileID: 8969623715672447508, guid: 87de66f273f544e46bb3196c42b8f952, type: 3}
-  maxHealth: 20
+  maxHealth: 10
   damageAmount: 1
   moveSpeed: 2
   leftRightDistance: 0

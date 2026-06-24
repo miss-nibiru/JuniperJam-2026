@@ -24,20 +24,31 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if(!_isDead) return;
+        if(_isDead) return;
+
         _currentHealth -= damageAmount;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
-        if (_currentHealth <= 0) Die();
-        
+
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     private void Die()
     {
-        if(!_isDead) return;
+        if(_isDead) return;
+
         _isDead = true;
 
-        if (runStateManager) runStateManager.GameOver(); // player getting destroyed will be handled by the state manager or it will create nulls
-        else Debug.Log("Player died - But theres manager!!");
-        
+        if (runStateManager)
+        {
+            runStateManager.GameOver();
+        }
+        else
+        {
+            Debug.Log("Player died - but there is no RunStateManager assigned!");
+        }
     }
+    
 }
