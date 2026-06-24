@@ -17,7 +17,7 @@ MonoBehaviour:
   spawnCoordinate: 
   spawnLocation: 1
   selectedGridCell:
-  - {x: 9, y: 10}
+  - {x: 9, y: 9}
   patternDirection: 1
   clusterMovementType: 0
   groupHorizontalDistance: 0

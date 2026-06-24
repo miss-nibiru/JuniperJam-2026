@@ -412,8 +412,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.01}
-  m_Size: {x: 0.6, y: 1.31}
+  m_Offset: {x: 0, y: -0.25}
+  m_Size: {x: 0.7, y: 1.7}
   m_Direction: 0
 --- !u!1 &7607187114595018328
 GameObject:
@@ -585,7 +585,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 1be7e8d4b610e1c4da5892ea89db82fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

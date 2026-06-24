@@ -7,18 +7,18 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifetime;
     [SerializeField] private int bulletDamage = 1;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, lifetime);
     }
 
     private void Update()
     {
-        rb.freezeRotation = true;
-        rb.linearVelocity = transform.up * bulletSpeed;
+        _rb.freezeRotation = true;
+        _rb.linearVelocity = transform.up * bulletSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,9 +31,18 @@ public class Bullet : MonoBehaviour
         Hit(collision.gameObject);
     }
 
-    private void Hit(GameObject hitObject)
+    private void Hit(GameObject hitTarget)
     {
-        EnemyController enemy = hitObject.GetComponent<EnemyController>();
+        BossHitBox enemyHurtbox = hitTarget.GetComponent<BossHitBox>();
+
+        if (enemyHurtbox)
+        {
+            enemyHurtbox.TakeHitsFromBullets(bulletDamage);
+            Destroy(gameObject);
+            return;
+        }
+
+        EnemyController enemy = hitTarget.GetComponent<EnemyController>();
 
         if (enemy)
         {
@@ -42,14 +51,13 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        EnemyProjectileController enemyProjectile = hitObject.GetComponent<EnemyProjectileController>(); //if it collides with a projectile with the main brain attached
+        EnemyProjectileController enemyProjectile = hitTarget.GetComponent<EnemyProjectileController>();
 
         if (enemyProjectile)
         {
             enemyProjectile.TakeDamage(bulletDamage);
             Destroy(gameObject);
             return;
-            
         }
     }
 }

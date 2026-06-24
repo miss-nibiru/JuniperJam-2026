@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3910410363953451212}
   - component: {fileID: 9010482464140849103}
+  - component: {fileID: 536635572273447246}
   m_Layer: 0
   m_Name: ClawCollider2
   m_TagString: Untagged
@@ -86,6 +87,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &536635572273447246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3032432937208677919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3acea950cac6d4a20834c99ff7e647c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossHitBox
+  enemyController: {fileID: 1992121987057256725}
 --- !u!1 &3711132538238968741
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +128,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.35, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8325048500298522653}
@@ -186,7 +200,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3711132538238968741}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a59b183e2aa0244d59ae2f1cd623798d, type: 2}
   m_CullingMode: 0
@@ -275,6 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6119519087214019655}
   - component: {fileID: 2023598934393750206}
+  - component: {fileID: 1342276506430541391}
   m_Layer: 0
   m_Name: HeadCollider
   m_TagString: Untagged
@@ -320,6 +335,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &1342276506430541391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528919261103312624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3acea950cac6d4a20834c99ff7e647c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossHitBox
+  enemyController: {fileID: 1992121987057256725}
 --- !u!1 &4967268707805927273
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7365614758790194707}
   - component: {fileID: 2873667681589332862}
+  - component: {fileID: 2623283086237213804}
   m_Layer: 0
   m_Name: ClawCollider1
   m_TagString: Untagged
@@ -406,6 +435,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &2623283086237213804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6271347709650703449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3acea950cac6d4a20834c99ff7e647c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossHitBox
+  enemyController: {fileID: 1992121987057256725}
 --- !u!1 &7760822068000230341
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +495,7 @@ GameObject:
   - component: {fileID: 5541698512126144807}
   - component: {fileID: 8509155668159311856}
   - component: {fileID: 2584218853827651269}
+  - component: {fileID: 3175956010690023642}
   m_Layer: 0
   m_Name: FinalBoss_Root
   m_TagString: Untagged
@@ -541,3 +584,18 @@ MonoBehaviour:
   projectileSpawnPoints:
   - {fileID: 1585180139735772904}
   - {fileID: 2008813238314938312}
+--- !u!114 &3175956010690023642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846461366675831921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9837f6720bfff47bc8b9a4a2a4e78566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossHealthBarConnector
+  bossHealth: {fileID: 1992121987057256725}
+  bossHealthBarUI: {fileID: 0}
+  showDelay: 1.5

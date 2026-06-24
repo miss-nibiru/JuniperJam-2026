@@ -2,39 +2,68 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// this is connected to player hp, boss hp and all enemies - we just need those to call this in
+/// Works for player, enemies, and boss as long as the target uses IHealthBars.
 /// </summary>
 
 public class HealthBarUI : MonoBehaviour
 {
-    
-    [SerializeField]  private Image heartsBar;
-    [SerializeField] private MonoBehaviour healthTarget; // this makes it so i can assingn scripts as targets -- would work on enemy data i belive
-    
+    [SerializeField] private Image heartsBar;
+    [SerializeField] private MonoBehaviour healthTarget;
+
     private IHealthBars _healthTarget;
-    
-    private void  Awake()
+    private bool _isSubscribed;
+
+    private void Awake()
     {
-        _healthTarget = healthTarget as IHealthBars;
-        if (_healthTarget == null) Debug.LogError("HealthBarUI: Health target is null");
+        if (healthTarget) _healthTarget = healthTarget as IHealthBars;
         
     }
 
     private void OnEnable()
     {
-        if (_healthTarget == null) Debug.LogError("HealthBarUI: Health target is null");
-        if (_healthTarget != null) _healthTarget.HealthChanged += UpdateHealthBar;
+        SubscribeToTarget();
+        RefreshBar();
+    }
+
+    private void OnDisable()
+    {
+        UnsubscribeFromTarget();
+    }
+
+    public void SetHealthTarget(IHealthBars newHealthTarget)
+    {
+        UnsubscribeFromTarget();
+        _healthTarget = newHealthTarget;
+        SubscribeToTarget();
+        RefreshBar();
+    }
+
+    private void SubscribeToTarget()
+    {
+        if (_healthTarget == null) return;
+        if (_isSubscribed) return;
+        _healthTarget.HealthChanged += UpdateHealthBar;
+        _isSubscribed = true;
+    }
+
+    private void UnsubscribeFromTarget()
+    {
+        if (_healthTarget == null) return;
+        if (!_isSubscribed) return;
+        _healthTarget.HealthChanged -= UpdateHealthBar;
+        _isSubscribed = false;
+    }
+
+    private void RefreshBar()
+    {
+        if (_healthTarget == null) return;
+        UpdateHealthBar(_healthTarget.CurrentHealth, _healthTarget.MaxHealth);
     }
 
     private void UpdateHealthBar(int currentHealth, int maxHealth)
     {
-        if(heartsBar == null) return;
-        if(maxHealth <= 0) return;
-        float currentHealthPercentage = (float)currentHealth / maxHealth;
-        heartsBar.fillAmount = currentHealthPercentage;
-        
+        if (heartsBar == null) return;
+        if (maxHealth <= 0) return;
+        heartsBar.fillAmount = (float)currentHealth / maxHealth;
     }
-    
-
-
 }
