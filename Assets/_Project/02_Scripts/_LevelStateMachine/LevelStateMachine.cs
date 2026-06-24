@@ -63,8 +63,15 @@ public class LevelStateMachine : MonoBehaviour
         
         _levelIsActive = true;
         
-        //ChangeLevelState(new LevelWaveState(currentLevel,enemySpawner,enemyManager,this));
+        ChangeLevelState(new LevelWaveState(currentLevel,enemySpawner,enemyManager,this));
         
+    }
+    
+    private void ChangeLevelState(ILevelState newLevelState)
+    {
+        _currentLevelState?.StopLevel();
+        _currentLevelState = newLevelState;
+        _currentLevelState?.StartLevel();
     }
 
     public void FinishCurrentLevel()
@@ -83,6 +90,9 @@ public class LevelStateMachine : MonoBehaviour
             AllLevelsComplete?.Invoke();
             return;
         }
+        
+        LevelComplete?.Invoke();
+        
     }
 
     public void StopCurrentLevel()
