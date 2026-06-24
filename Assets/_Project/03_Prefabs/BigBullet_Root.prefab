@@ -77,6 +77,7 @@ MonoBehaviour:
   bulletSpeed: 9
   lifetime: 4
   bulletDamage: 6
+  shouldPierceEnemies: 1
 --- !u!61 &7926918093062908472
 BoxCollider2D:
   m_ObjectHideFlags: 0

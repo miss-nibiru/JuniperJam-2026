@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float lifetime;
     [SerializeField] private int bulletDamage = 1;
+    [SerializeField] private bool shouldPierceEnemies;
 
     private Rigidbody2D _rb;
 
@@ -38,7 +39,10 @@ public class Bullet : MonoBehaviour
         if (enemyHurtbox)
         {
             enemyHurtbox.TakeHitsFromBullets(bulletDamage);
-            Destroy(gameObject);
+            if (!shouldPierceEnemies)
+            {
+                Destroy(gameObject);
+            }
             return;
         }
 
@@ -47,7 +51,10 @@ public class Bullet : MonoBehaviour
         if (enemy)
         {
             enemy.TakeDamage(bulletDamage);
-            Destroy(gameObject);
+            if (!shouldPierceEnemies)
+            {
+                Destroy(gameObject);
+            }
             return;
         }
 
@@ -56,7 +63,10 @@ public class Bullet : MonoBehaviour
         if (enemyProjectile)
         {
             enemyProjectile.TakeDamage(bulletDamage);
-            Destroy(gameObject);
+            if (!shouldPierceEnemies)
+            {
+                Destroy(gameObject);
+            }
             return;
         }
     }
