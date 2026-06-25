@@ -1,16 +1,23 @@
 using UnityEngine;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource bossMusicSource;
     [SerializeField] private AudioSource sfxSource;
 
-    [SerializeField] private float musicVolume = 0.35f;
-    [SerializeField] private float sfxVolume = 0.85f;
+    [SerializeField] private float musicVolume;
+    [SerializeField] private float sfxVolume;
 
     [SerializeField] private AudioClip gameTheme;
+    [SerializeField] private AudioClip bossTheme;
+    
+    [SerializeField] private float bossIntroMusicMultiplier = 0.2f; // How quiet the normal music gets when the boss intro starts
+    [SerializeField] private float bossIntroFadeTime = 1.5f; // How long the normal music takes to fade down
+    [SerializeField] private float bossMusicFadeInTime = 2f; // How long the boss music takes to fade in after the queen yells
 
     [SerializeField] private AudioClip spinStartSound;
     [SerializeField] private AudioClip spinFinishedSound;
@@ -19,6 +26,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] machineGunSounds;
     [SerializeField] private AudioClip[] singleShotSounds;
 
+    private Coroutine _musicFadeRoutine;
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,15 +35,20 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        
         Instance = this;
 
         if (!musicSource) musicSource = gameObject.AddComponent<AudioSource>();
-        if (!sfxSource || sfxSource == musicSource) sfxSource = gameObject.AddComponent<AudioSource>();
-
+        if (!bossMusicSource || bossMusicSource == musicSource) bossMusicSource = gameObject.AddComponent<AudioSource>();
+        if (!sfxSource || sfxSource == musicSource || sfxSource == bossMusicSource) sfxSource = gameObject.AddComponent<AudioSource>();
+        
         musicSource.playOnAwake = false;
         musicSource.loop = true;
         musicSource.volume = musicVolume;
+
+        bossMusicSource.playOnAwake = false;
+        bossMusicSource.loop = true;
+        bossMusicSource.volume = 0f;
 
         sfxSource.playOnAwake = false;
         sfxSource.loop = false;
@@ -81,6 +95,12 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = musicVolume;
         musicSource.Play();
     }
+    
+    public void LowerMusicForBossIntro()
+    {
+        if (!musicSource) return;
+        musicSource.volume = musicVolume * bossIntroMusicMultiplier;
+    }
 
     private void PlayRandomSound(AudioClip[] clips, float volumeMultiplier = 1f)
     {
@@ -97,6 +117,99 @@ public class AudioManager : MonoBehaviour
         sfxSource.clip = clip;
         sfxSource.volume = sfxVolume * volumeMultiplier;
         sfxSource.Play();
+    }
+    
+    public void FadeGameMusicForBossIntro()
+    {
+        if (!musicSource) return;
+
+        float targetVolume = musicVolume * bossIntroMusicMultiplier;
+
+        StartMusicFade(FadeSourceVolume(
+            musicSource,
+            musicSource.volume,
+            targetVolume,
+            bossIntroFadeTime
+        ));
+    }
+
+    public void CrossfadeToBossTheme()
+    {
+        if (!bossTheme) return;
+        if (!musicSource) return;
+        if (!bossMusicSource) return;
+
+        bossMusicSource.clip = bossTheme;
+        bossMusicSource.volume = 0f;
+        bossMusicSource.loop = true;
+        bossMusicSource.Play();
+
+        StartMusicFade(CrossfadeMusicSources(
+            musicSource,
+            bossMusicSource,
+            musicSource.volume,
+            0f,
+            0f,
+            musicVolume,
+            bossMusicFadeInTime
+        ));
+    }
+    
+    private void StartMusicFade(IEnumerator fadeRoutine)
+    {
+        if (_musicFadeRoutine != null)
+        {
+            StopCoroutine(_musicFadeRoutine);
+        }
+
+        _musicFadeRoutine = StartCoroutine(fadeRoutine);
+    }
+
+    private IEnumerator FadeSourceVolume(AudioSource source, float startVolume, float targetVolume, float duration)
+    {
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / duration;
+            t = t * t * (3f - 2f * t); // smooth ease
+
+            source.volume = Mathf.Lerp(startVolume, targetVolume, t);
+            yield return null;
+        }
+
+        source.volume = targetVolume;
+    }
+
+    private IEnumerator CrossfadeMusicSources(
+        AudioSource oldSource,
+        AudioSource newSource,
+        float oldStartVolume,
+        float oldTargetVolume,
+        float newStartVolume,
+        float newTargetVolume,
+        float duration
+    )
+    {
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / duration;
+            t = t * t * (3f - 2f * t); // smooth ease
+
+            oldSource.volume = Mathf.Lerp(oldStartVolume, oldTargetVolume, t);
+            newSource.volume = Mathf.Lerp(newStartVolume, newTargetVolume, t);
+
+            yield return null;
+        }
+
+        oldSource.volume = oldTargetVolume;
+        newSource.volume = newTargetVolume;
+
+        oldSource.Stop();
     }
 
     private AudioClip GetRandomClip(AudioClip[] clips)

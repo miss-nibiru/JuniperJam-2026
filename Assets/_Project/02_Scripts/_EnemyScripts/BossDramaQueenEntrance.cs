@@ -87,11 +87,14 @@ public class BossDramaQueenEntrance : MonoBehaviour
 
         PrepareBossForIntro();
 
+        AudioManager.Instance?.LowerMusicForBossIntro();
+
         if (bossIntroTimeline)
         {
             bossIntroTimeline.stopped += HandleTimelineStopped;
             bossIntroTimeline.Play();
         }
+        
         else
         {
             FinishBossIntro();
@@ -104,6 +107,8 @@ public class BossDramaQueenEntrance : MonoBehaviour
         if (voidPortal) voidPortal.SetActive(true);
         if (cinematicView) cinematicView.SetActive(true);
         if (bossHealthBarUI) bossHealthBarUI.Hide();
+        
+        AudioManager.Instance?.FadeGameMusicForBossIntro(); // Normal music becomes quiet while the queen intro plays.
 
         if (bossIntroTimeline)
         {
@@ -173,6 +178,7 @@ public class BossDramaQueenEntrance : MonoBehaviour
         if (voidPortal) voidPortal.SetActive(false);
         if (cinematicView) cinematicView.SetActive(false);
 
+        AudioManager.Instance?.CrossfadeToBossTheme();
         runStateManager?.SetCombatSystemsEnabled(true);
 
         _onIntroFinished?.Invoke();
