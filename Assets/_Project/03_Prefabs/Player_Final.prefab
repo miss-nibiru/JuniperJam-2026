@@ -366,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveAbilityDash
   dashDuration: 0.225
   dashForce: 400
+  dashAnimationTrigger: Dash
 --- !u!114 &8464765792240772591
 MonoBehaviour:
   m_ObjectHideFlags: 0
