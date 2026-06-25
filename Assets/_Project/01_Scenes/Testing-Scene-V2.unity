@@ -225,7 +225,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 548895680}
         m_TargetAssemblyTypeName: GameButtonActions, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: PlayAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
