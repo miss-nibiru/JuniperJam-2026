@@ -43,13 +43,19 @@ public class LevelWaveState : ILevelState
         _levelFinished = false;
 
         EnemySpawnGroupData[] enemyGroups = _levelWaveData.EnemyGroups;
-        _bossHasSpawned = false;
-        _thisWaveHasBoss = WaveHasBoss(enemyGroups);
 
-        if (enemyGroups == null || enemyGroups.Length == 0)
+        _bossHasSpawned = _levelWaveData.HasBossEntrance;
+        _thisWaveHasBoss = _levelWaveData.HasBossEntrance || WaveHasBoss(enemyGroups);
+
+        if ((enemyGroups == null || enemyGroups.Length == 0) && !_levelWaveData.HasBossEntrance)
         {
             FinishWave();
             return;
+        }
+
+        if (enemyGroups == null)
+        {
+            enemyGroups = new EnemySpawnGroupData[0];
         }
 
         _groupCooldowns = new float[enemyGroups.Length];
@@ -107,7 +113,6 @@ public class LevelWaveState : ILevelState
 
         if (enemyGroups == null || enemyGroups.Length == 0)
         {
-            FinishWave();
             return;
         }
         

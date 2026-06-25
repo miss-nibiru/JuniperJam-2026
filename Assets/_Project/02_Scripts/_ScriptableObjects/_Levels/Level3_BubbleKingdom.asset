@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Level3_BubbleKingdom
   m_EditorClassIdentifier: Assembly-CSharp::LevelWaveData
   levelName: Level 3 - Bubble Kingdom
-  waveTime: 20
+  waveTime: 5
   enemyGroups:
   - {fileID: 11400000, guid: 4af79eab14c844789b74593fba44ec3b, type: 2}
   - {fileID: 11400000, guid: 7860acc16f2ac47339e0e69e582445d0, type: 2}
   - {fileID: 11400000, guid: 663fcffba15ef48f2a253a0facd47c21, type: 2}
   - {fileID: 11400000, guid: 90af8277cd61349429cc86ade20fb71a, type: 2}
   mustClearAllEnemiesToFinish: 0
+  hasBossEntrance: 0
   spawnDelay: 0.6

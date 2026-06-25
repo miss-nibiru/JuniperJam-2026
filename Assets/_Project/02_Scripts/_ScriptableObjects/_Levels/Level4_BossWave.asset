@@ -16,6 +16,6 @@ MonoBehaviour:
   waveTime: 200
   enemyGroups:
   - {fileID: 11400000, guid: 7860acc16f2ac47339e0e69e582445d0, type: 2}
-  mustClearAllEnemiesToFinish: 1
+  mustClearAllEnemiesToFinish: 0
   hasBossEntrance: 1
   spawnDelay: 1

@@ -10,6 +10,8 @@ public class BossDramaQueenEntrance : MonoBehaviour
 {
     [Header("Boss Entrance Sequence")]
     [SerializeField] private PlayableDirector bossIntroTimeline;
+    [SerializeField] private GameObject voidPortal;
+    [SerializeField] private GameObject cinematicView;
 
     [Header("Mama Queen")]
     [SerializeField] private GameObject finalBossRoot;
@@ -48,7 +50,28 @@ public class BossDramaQueenEntrance : MonoBehaviour
 
     private void Start()
     {
-        PrepareBossForIntro();
+        HideBossIntroObjects();
+
+        if (bossIntroTimeline)
+        {
+            bossIntroTimeline.playOnAwake = false;
+            bossIntroTimeline.Stop();
+            bossIntroTimeline.time = 0;
+        }
+    }
+    
+    private void HideBossIntroObjects()
+    {
+        if (finalBossRoot) finalBossRoot.SetActive(false);
+        if (voidPortal) voidPortal.SetActive(false);
+        if (cinematicView) cinematicView.SetActive(false);
+        if (bossHealthBarUI) bossHealthBarUI.Hide();
+    }
+
+    private void HideBossUntilIntro()
+    {
+        if(finalBossRoot) finalBossRoot.SetActive(false);
+        if (bossHealthBarUI) bossHealthBarUI.Hide();
     }
 
     public void PlayBossIntro(Action onIntroFinished)
@@ -78,7 +101,15 @@ public class BossDramaQueenEntrance : MonoBehaviour
     private void PrepareBossForIntro()
     {
         if (finalBossRoot) finalBossRoot.SetActive(true);
+        if (voidPortal) voidPortal.SetActive(true);
+        if (cinematicView) cinematicView.SetActive(true);
         if (bossHealthBarUI) bossHealthBarUI.Hide();
+
+        if (bossIntroTimeline)
+        {
+            bossIntroTimeline.time = 0;
+            bossIntroTimeline.Evaluate();
+        }
 
         foreach (Collider2D hitbox in bossHitboxes)
         {
@@ -138,6 +169,9 @@ public class BossDramaQueenEntrance : MonoBehaviour
         {
             bossHealthBarUI.ShowForBoss(bossController);
         }
+
+        if (voidPortal) voidPortal.SetActive(false);
+        if (cinematicView) cinematicView.SetActive(false);
 
         runStateManager?.SetCombatSystemsEnabled(true);
 
