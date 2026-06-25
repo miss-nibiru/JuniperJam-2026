@@ -527,7 +527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &149225249
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1417,7 +1417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &448788596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1886,7 +1886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &588946702
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1982,6 +1982,7 @@ GameObject:
   - component: {fileID: 625199846}
   - component: {fileID: 625199848}
   - component: {fileID: 625199847}
+  - component: {fileID: 625199849}
   m_Layer: 5
   m_Name: BottomBar
   m_TagString: Untagged
@@ -2046,6 +2047,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625199845}
   m_CullTransparentMesh: 1
+--- !u!95 &625199849
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625199845}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &653150210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,7 +2974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1007918071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3717,6 +3740,8 @@ PlayableDirector:
     value: {fileID: 2024099133}
   - key: {fileID: -5386398013839572449, guid: 0fdbe05e430414c4bae3bae2522edc37, type: 2}
     value: {fileID: 224284701}
+  - key: {fileID: -4929713552322985691, guid: 0fdbe05e430414c4bae3bae2522edc37, type: 2}
+    value: {fileID: 625199849}
   m_ExposedReferences:
     m_References:
     - f43780bcd5899498b8446f93fd99d37e: {fileID: 1627430525}
@@ -3872,7 +3897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1327330846
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4404,6 +4429,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b28c335cf8d4b4472b70bd6af4318427, type: 2}
   enemySpawner: {fileID: 250379851}
   enemyManager: {fileID: 795559531}
+  bossEntrance: {fileID: 1264275723}
 --- !u!1 &1936124967
 GameObject:
   m_ObjectHideFlags: 0

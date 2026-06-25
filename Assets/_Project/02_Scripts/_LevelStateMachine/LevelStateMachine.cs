@@ -11,6 +11,7 @@ public class LevelStateMachine : MonoBehaviour
     [SerializeField] private LevelWaveData[] levels;
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private EnemyManager enemyManager;
+    [SerializeField] private BossDramaQueenEntrance bossEntrance;
 
     private int _currentLevelIndex;
     private ILevelState _currentLevelState;
@@ -25,15 +26,6 @@ public class LevelStateMachine : MonoBehaviour
     {
         _currentLevelIndex = 0;
         _levelIsActive = false;
-        
-        Debug.Log("Waiting for Run State Manager...");
-
-        // ChangeLevelState(new LevelWaveState(
-        //     levels[_currentLevelIndex],
-        //     enemySpawner,
-        //     enemyManager,
-        //     this
-        // ));
     }
 
     private void Update()
@@ -60,10 +52,22 @@ public class LevelStateMachine : MonoBehaviour
         
         LevelWaveData currentLevel = levels[_currentLevelIndex];
         Debug.Log("Starting level: " + currentLevel.LevelName);
-        
+
+        if (currentLevel.HasBossEntrance && bossEntrance)
+        {
+            _levelIsActive = false;
+
+            bossEntrance.PlayBossIntro(() =>
+            {
+                _levelIsActive = true;
+                ChangeLevelState(new LevelWaveState(currentLevel, enemySpawner, enemyManager, this));
+            });
+
+            return;
+        }
+
         _levelIsActive = true;
-        
-        ChangeLevelState(new LevelWaveState(currentLevel,enemySpawner,enemyManager,this));
+        ChangeLevelState(new LevelWaveState(currentLevel, enemySpawner, enemyManager, this));
         
     }
     
