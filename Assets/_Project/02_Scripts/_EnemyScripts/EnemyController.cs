@@ -13,6 +13,9 @@ public class EnemyController : MonoBehaviour, IHealthBars
     [SerializeField] private PlayerHealth playerHealth;
     
     [SerializeField] private BossDeathSequence bossDeathSequence;
+    [SerializeField] private Animator enemyAnimator;
+    [SerializeField] private string deathTriggerName = "Death";
+    [SerializeField] private float deathDestroyBuffer = 0.05f;
 
     private bool _canChase;
     private Coroutine _movementRoutine;
@@ -30,9 +33,15 @@ public class EnemyController : MonoBehaviour, IHealthBars
 
     public EnemyData EnemyData => enemyData;
 
-    private void Start()
+    private void Awake()
     {
         if(!bossDeathSequence) bossDeathSequence = GetComponent<BossDeathSequence>();
+        if(!enemyAnimator) enemyAnimator = GetComponentInChildren<Animator>();
+        if(string.IsNullOrEmpty(deathTriggerName)) deathTriggerName = "Death";
+    }
+
+    private void Start()
+    {
         if(enemyData) _currentHealth = enemyData.MaxHealth;
     }
 
@@ -184,7 +193,7 @@ public class EnemyController : MonoBehaviour, IHealthBars
         if (playerHealth) playerHealth.TakeDamage(enemyData.DamageAmount);
 
         StopMovementRoutine();
-        Destroy(gameObject);
+        DieBish();
 
     }
 
@@ -221,6 +230,80 @@ public class EnemyController : MonoBehaviour, IHealthBars
             bossDeathSequence.PlayDeathSequence();
             return;
         }
+
+        if (CanPlayDeathAnimation())
+        {
+            StartCoroutine(DeathAnimationRoutine());
+            return;
+        }
+
         Destroy(gameObject);
+    }
+
+    private IEnumerator DeathAnimationRoutine()
+    {
+        StopEnemyGameplay();
+        enemyAnimator.SetTrigger(deathTriggerName);
+
+        float deathAnimationLength = Mathf.Max(GetDeathAnimationLength(), 0.1f);
+        yield return new WaitForSeconds(deathAnimationLength + deathDestroyBuffer);
+
+        Destroy(gameObject);
+    }
+
+    private bool CanPlayDeathAnimation()
+    {
+        if (!enemyAnimator) return false;
+        if (!enemyAnimator.runtimeAnimatorController) return false;
+
+        foreach (AnimatorControllerParameter parameter in enemyAnimator.parameters)
+        {
+            if (parameter.name != deathTriggerName) continue;
+            if (parameter.type != AnimatorControllerParameterType.Trigger) continue;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private float GetDeathAnimationLength()
+    {
+        RuntimeAnimatorController animatorController = enemyAnimator.runtimeAnimatorController;
+        AnimationClip longestDeathClip = null;
+
+        foreach (AnimationClip animationClip in animatorController.animationClips)
+        {
+            if (!animationClip) continue;
+            if (animationClip.name.IndexOf("Death", StringComparison.OrdinalIgnoreCase) < 0) continue;
+            if (longestDeathClip && animationClip.length <= longestDeathClip.length) continue;
+
+            longestDeathClip = animationClip;
+        }
+
+        if (!longestDeathClip) return 0f;
+
+        return longestDeathClip.length;
+    }
+
+    private void StopEnemyGameplay()
+    {
+        foreach (EnemyShooterController shooter in GetComponents<EnemyShooterController>())
+        {
+            if (!shooter) continue;
+            shooter.enabled = false;
+        }
+
+        foreach (Collider2D enemyCollider in GetComponentsInChildren<Collider2D>())
+        {
+            if (!enemyCollider) continue;
+            enemyCollider.enabled = false;
+        }
+
+        foreach (HealthBarUI healthBar in GetComponentsInChildren<HealthBarUI>())
+        {
+            if (!healthBar) continue;
+            healthBar.gameObject.SetActive(false);
+        }
     }
 }
