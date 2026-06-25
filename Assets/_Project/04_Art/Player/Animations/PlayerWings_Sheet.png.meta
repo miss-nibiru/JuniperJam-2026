@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 817bf77f547d96844a214ef30a9fed95
+guid: 9c87ad0ac698aba4c994425e83c10671
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Spin_sheet_0
+      name: PlayerWings_Sheet_0
       rect:
         serializedVersion: 2
-        x: 474
-        y: 24
-        width: 1044
-        height: 2024
+        x: 69
+        y: 826
+        width: 1920
+        height: 624
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 290cab101bf2f5248a638298454021b1
-      internalID: -997616865
+      spriteID: 671d443d489e4ac4fb60323a00dff15a
+      internalID: -1439165783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Spin_sheet_1
+      name: PlayerWings_Sheet_1
       rect:
         serializedVersion: 2
-        x: 2706
-        y: 30
-        width: 696
-        height: 2018
+        x: 2049
+        y: 1054
+        width: 2045
+        height: 715
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 422b9646e75e6c444874f887ca7e81b4
-      internalID: 1781285186
+      spriteID: b26d9f502e380a640b08785b90355e5d
+      internalID: 54896012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Spin_sheet_2
+      name: PlayerWings_Sheet_2
       rect:
         serializedVersion: 2
-        x: 4590
-        y: 0
-        width: 774
-        height: 2048
+        x: 4098
+        y: 1054
+        width: 2043
+        height: 715
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0bef46b36e7b2a4ebb6e0be76ceb671
-      internalID: -1585563971
+      spriteID: 0d4cce64c65aa8f47b4aa4defe2c7852
+      internalID: 1299480912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Spin_sheet_3
+      name: PlayerWings_Sheet_3
       rect:
         serializedVersion: 2
-        x: 6522
-        y: 6
-        width: 1044
-        height: 2030
+        x: 6213
+        y: 826
+        width: 1920
+        height: 624
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +191,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 575a196859532574eb96f3ca8d15765e
-      internalID: -382967814
+      spriteID: 38305af112513c445837f526a65091bd
+      internalID: -1654062939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Spin_sheet_4
+      name: PlayerWings_Sheet_4
       rect:
         serializedVersion: 2
-        x: 8730
-        y: 12
-        width: 696
-        height: 2030
+        x: 8259
+        y: 826
+        width: 1926
+        height: 624
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +213,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 404c62b8059261145a3da5d57214c60c
-      internalID: -2014126502
+      spriteID: 6380bc832563e4d4983bf5ad39cf99fb
+      internalID: -896308510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Spin_sheet_5
+      name: PlayerWings_Sheet_5
       rect:
         serializedVersion: 2
-        x: 10734
-        y: 0
-        width: 774
-        height: 2048
+        x: 10419
+        y: 502
+        width: 1530
+        height: 954
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c06be327e6e2dd479477f43e43af111
-      internalID: 1600264952
+      spriteID: e5313a8ef5f587745b489c6cbea3fb5d
+      internalID: 620370651
       vertices: []
       indices: 
       edges: []
@@ -245,7 +245,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 803d1ed2004cff747a4832842878b10d
+    spriteID: 62da140ec4972004aa5c271ad17c3478
     internalID: 0
     vertices: []
     indices: 
@@ -257,12 +257,12 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Player_Spin_sheet_0: -997616865
-      Player_Spin_sheet_1: 1781285186
-      Player_Spin_sheet_2: -1585563971
-      Player_Spin_sheet_3: -382967814
-      Player_Spin_sheet_4: -2014126502
-      Player_Spin_sheet_5: 1600264952
+      PlayerWings_Sheet_0: -1439165783
+      PlayerWings_Sheet_1: 54896012
+      PlayerWings_Sheet_2: 1299480912
+      PlayerWings_Sheet_3: -1654062939
+      PlayerWings_Sheet_4: -896308510
+      PlayerWings_Sheet_5: 620370651
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
