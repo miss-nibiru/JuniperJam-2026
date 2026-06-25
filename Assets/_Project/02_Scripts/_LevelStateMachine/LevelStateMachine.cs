@@ -21,6 +21,7 @@ public class LevelStateMachine : MonoBehaviour
 
     public event Action LevelComplete;
     public event Action AllLevelsComplete;
+    public event Action<float, float> LevelTimerUpdated;
 
     private void Start()
     {
@@ -71,6 +72,11 @@ public class LevelStateMachine : MonoBehaviour
         
     }
     
+    public void ShowLevelTimer(float timeRemaining, float totalTime)
+    {
+        LevelTimerUpdated?.Invoke(timeRemaining, totalTime);
+    }
+    
     private void ChangeLevelState(ILevelState newLevelState)
     {
         _currentLevelState?.StopLevel();
@@ -114,13 +120,6 @@ public class LevelStateMachine : MonoBehaviour
         _currentLevelIndex = 0;
         
     }
-
-    // public void ChangeLevelState(ILevelState newLevelState)
-    // {
-    //     _currentLevelState?.StopLevel();
-    //     _currentLevelState = newLevelState;
-    //     _currentLevelState?.StartLevel();
-    // }
 
     public void GoToNextLevel()
     {

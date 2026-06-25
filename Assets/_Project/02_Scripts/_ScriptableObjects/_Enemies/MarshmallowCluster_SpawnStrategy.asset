@@ -17,17 +17,17 @@ MonoBehaviour:
   spawnCoordinate: 0300000002000000
   spawnLocation: 1
   selectedGridCell:
-  - {x: 3, y: 10}
-  - {x: 3, y: 19}
-  - {x: 18, y: 10}
-  - {x: 18, y: 20}
+  - {x: 3, y: 8}
+  - {x: 3, y: 18}
+  - {x: 18, y: 8}
+  - {x: 18, y: 18}
   patternDirection: 0
   clusterMovementType: 0
   groupHorizontalDistance: 0
   groupHorizontalSpeed: 0
   groupAdvanceSpeed: 0
   amountToSpawn: 200
-  enemiesPerPattern: 5
-  patternSpacing: 2
+  enemiesPerPattern: 6
+  patternSpacing: 2.5
   maxActiveOfType: 100
   delayBetweenSpawns: 1

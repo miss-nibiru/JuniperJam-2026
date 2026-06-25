@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectileStrategyData
   projectileData: {fileID: 11400000, guid: cb550bde7df54447996c3a9dd8c0cfe3, type: 2}
   shootingPattern: 1
-  firstShotDelay: 0
-  timeBetweenShots: 6
-  shotsPerBurst: 7
-  delayBetweenBurstShots: 0.05
-  burstAngleSpread: 45
+  firstShotDelay: 0.5
+  timeBetweenShots: 7
+  shotsPerBurst: 10
+  delayBetweenBurstShots: 0.03
+  burstAngleSpread: 65
   fanAngleSpread: 0

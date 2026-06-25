@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Mean Fairy
   enemyPrefab: {fileID: 8969623715672447508, guid: 4bf292c1f70c645c8a84ee6aa68eee67, type: 3}
-  maxHealth: 6
+  maxHealth: 10
   damageAmount: 1
-  moveSpeed: 3
+  moveSpeed: 4
   leftRightDistance: 0
   movementType: 1
-  introRows: 4
-  introSpeed: 3
+  introRows: 6
+  introSpeed: 1
   chaseDelay: 2
   gridDestroyPadding: 0

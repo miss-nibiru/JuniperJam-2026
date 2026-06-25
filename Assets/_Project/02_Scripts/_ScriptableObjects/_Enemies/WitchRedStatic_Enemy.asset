@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Witch Purple Chase Shoot
   enemyPrefab: {fileID: 8969623715672447508, guid: df6e45b6d7e14438ab9cc87f89511494, type: 3}
-  maxHealth: 10
-  damageAmount: 0
+  maxHealth: 15
+  damageAmount: 1
   moveSpeed: 0
   leftRightDistance: 0
   movementType: 3

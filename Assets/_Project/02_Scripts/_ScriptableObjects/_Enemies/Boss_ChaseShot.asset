@@ -15,7 +15,7 @@ MonoBehaviour:
   projectileData: {fileID: 11400000, guid: d1de9f48b58a7483a8275f0d20b8648b, type: 2}
   shootingPattern: 0
   firstShotDelay: 3
-  timeBetweenShots: 10
+  timeBetweenShots: 7
   shotsPerBurst: 0
   delayBetweenBurstShots: 0
   burstAngleSpread: 0

@@ -17,10 +17,10 @@ MonoBehaviour:
   spawnCoordinate: 01000000000000000200000003000000
   spawnLocation: 1
   selectedGridCell:
-  - {x: 3, y: 3}
-  - {x: 18, y: 3}
-  - {x: 3, y: 18}
-  - {x: 18, y: 18}
+  - {x: 3, y: 4}
+  - {x: 18, y: 4}
+  - {x: 3, y: 17}
+  - {x: 18, y: 17}
   patternDirection: 0
   clusterMovementType: 0
   groupHorizontalDistance: 3

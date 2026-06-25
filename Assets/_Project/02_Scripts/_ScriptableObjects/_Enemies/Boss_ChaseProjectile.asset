@@ -15,8 +15,8 @@ MonoBehaviour:
   projectileName: Boss Chase Projectile
   projectilePrefab: {fileID: 4489415941996475654, guid: c6497b6ccefe240218717ae61c0b5de7, type: 3}
   projectileSpeed: 2
-  projectileDamageAmount: 1
-  projectileHealth: 2
-  projectileLifeTime: 5
+  projectileDamageAmount: 2
+  projectileHealth: 3
+  projectileLifeTime: 7
   canBeShot: 1
   projectileBehaviour: 0

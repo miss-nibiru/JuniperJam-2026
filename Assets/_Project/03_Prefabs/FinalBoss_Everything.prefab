@@ -529,6 +529,10 @@ PlayableDirector:
     value: {fileID: 8261177576489111305}
   - key: {fileID: -4929713552322985691, guid: 0fdbe05e430414c4bae3bae2522edc37, type: 2}
     value: {fileID: 2489074001887608020}
+  - key: {fileID: 525656979844256376, guid: 0fdbe05e430414c4bae3bae2522edc37, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 120634468502835818, guid: 0fdbe05e430414c4bae3bae2522edc37, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - f43780bcd5899498b8446f93fd99d37e: {fileID: 4829023793128279573}
@@ -540,6 +544,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2600290427861386737}
     m_Modifications:
+    - target: {fileID: 1992121987057256725, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: bossDeathSequence
+      value: 
+      objectReference: {fileID: 6618406784618129880}
     - target: {fileID: 2263286626589371121, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -614,6 +622,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8846461366675831921, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 6618406784618129880}
+    - targetCorrespondingSourceObject: {fileID: 8846461366675831921, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 4245438074363599614}
     - targetCorrespondingSourceObject: {fileID: 8846461366675831921, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
       insertIndex: -1
@@ -635,6 +646,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8846461366675831921, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
   m_PrefabInstance: {fileID: 4161557176315277924}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6618406784618129880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4829023793128279573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c8a99b555304d45b605975fc374dcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossDeathSequence
+  bossAnimator: {fileID: 4245438074363599614}
+  deathTriggerName: Death
+  destroyDelay: 2
+  sfxSource: {fileID: 0}
+  deathYell: {fileID: 8300000, guid: 163fd27a4e6614a9292bbaad5e125515, type: 3}
+  cameraShake: {fileID: 0}
+  bossShakeTarget: {fileID: 5352617987185496697}
+  shakeDuration: 1.5
+  cameraShakeStrength: 0.1
+  bossShakeStrength: 0.06
+  bossHitboxes: []
+  bossShooters: []
 --- !u!95 &4245438074363599614
 Animator:
   serializedVersion: 7

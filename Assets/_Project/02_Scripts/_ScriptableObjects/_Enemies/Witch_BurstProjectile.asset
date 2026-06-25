@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileData
   projectileName: Witch Burst Projectiles
   projectilePrefab: {fileID: 4489415941996475654, guid: fdcca2a410edd412397a8da5198f1fd1, type: 3}
-  projectileSpeed: 1
-  projectileDamageAmount: 1
-  projectileHealth: 1
+  projectileSpeed: 3
+  projectileDamageAmount: 2
+  projectileHealth: 4
   projectileLifeTime: 10
   canBeShot: 1
   projectileBehaviour: 1

@@ -41,6 +41,7 @@ public class LevelWaveState : ILevelState
         _currentWaveTimer = _levelWaveData.WaveTime;
         _currentSpawnTimer = _levelWaveData.SpawnDelay;
         _levelFinished = false;
+        _levelStateMachine.ShowLevelTimer(_currentWaveTimer, _levelWaveData.WaveTime);
 
         EnemySpawnGroupData[] enemyGroups = _levelWaveData.EnemyGroups;
 
@@ -67,6 +68,11 @@ public class LevelWaveState : ILevelState
     {
         if (_levelFinished) return;
         _currentWaveTimer -= Time.deltaTime; //countdown wave timer --- should pause before the wave starts
+        _currentWaveTimer = Mathf.Max(0, _currentWaveTimer);
+        
+        //communicate with the ui to change how much time is left
+        _levelStateMachine.ShowLevelTimer(_currentWaveTimer, _levelWaveData.WaveTime);
+        
         UpdateGroupCooldowns();
         
         if (_thisWaveHasBoss && _bossHasSpawned && _enemyManager.ActiveBossCount == 0)

@@ -76,7 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   bulletSpeed: 11
   lifetime: 4
-  bulletDamage: 2
+  bulletDamage: 3
   shouldPierceEnemies: 0
 --- !u!61 &7926918093062908472
 BoxCollider2D:

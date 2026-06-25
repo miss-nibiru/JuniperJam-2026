@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour, IHealthBars
     [SerializeField] private MainGridManager mainGrid;
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private Transform playerTargetPoint;
+    
+    [SerializeField] private BossDeathSequence bossDeathSequence;
 
     private bool _canChase;
     private Coroutine _movementRoutine;
@@ -18,6 +20,7 @@ public class EnemyController : MonoBehaviour, IHealthBars
     private bool _movingSide;
     
     private int _currentHealth;
+    private bool _isDying;
     
     // interface stuff
     public int CurrentHealth => _currentHealth;
@@ -28,11 +31,13 @@ public class EnemyController : MonoBehaviour, IHealthBars
 
     private void Start()
     {
-        _currentHealth = enemyData.MaxHealth;
+        if(!bossDeathSequence) bossDeathSequence = GetComponent<BossDeathSequence>();
+        if(enemyData) _currentHealth = enemyData.MaxHealth;
     }
 
     void Update()
     {
+        if(_isDying) return;
         if(!EnemyData) return;
         if (EnemyData.MovementType == EnemyData.EnemyMovementType.Chase && _canChase)
         {
@@ -173,6 +178,7 @@ public class EnemyController : MonoBehaviour, IHealthBars
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(_isDying)return;
         if(!other.CompareTag("Player")) return;
 
         PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
@@ -185,7 +191,7 @@ public class EnemyController : MonoBehaviour, IHealthBars
 
     public void TakeDamage(int damageAmount)
     {
-        
+        if (_isDying) return;
         _currentHealth -= damageAmount;
         _currentHealth = Mathf.Clamp(_currentHealth,0,MaxHealth);
         HealthChanged?.Invoke(_currentHealth, MaxHealth);
@@ -194,12 +200,19 @@ public class EnemyController : MonoBehaviour, IHealthBars
             //death animation here
             DieBish();
         }
-        
     }
 
     private void DieBish()
     {
+        if (_isDying) return;
+        _isDying = true;
         StopMovementRoutine();
+
+        if (enemyData && enemyData.MovementType == EnemyData.EnemyMovementType.Boss && bossDeathSequence)
+        {
+            bossDeathSequence.PlayDeathSequence();
+            return;
+        }
         Destroy(gameObject);
     }
 }
