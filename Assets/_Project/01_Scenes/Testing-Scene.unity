@@ -445,7 +445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &45949367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1416,6 +1416,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251049581}
   m_CullTransparentMesh: 1
+--- !u!114 &253464498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 552117690806160726, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+  m_PrefabInstance: {fileID: 459447153}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3340513f642b4d29a1d4dfc4bcfa245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossDramaQueenEntrance
 --- !u!1 &272141062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,6 +2482,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434313770}
   m_CullTransparentMesh: 1
+--- !u!1001 &459447153
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 552117690806160726, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: mainGrid
+      value: 
+      objectReference: {fileID: 52753044}
+    - target: {fileID: 552117690806160726, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: enemyManager
+      value: 
+      objectReference: {fileID: 649241670}
+    - target: {fileID: 552117690806160726, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: bossHealthBarUI
+      value: 
+      objectReference: {fileID: 1975229035}
+    - target: {fileID: 552117690806160726, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: runStateManager
+      value: 
+      objectReference: {fileID: 656271722}
+    - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948149001397792958, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: m_Name
+      value: FinalBoss_Everything
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
 --- !u!1 &466378183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5321,7 +5405,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1968781614}
+  - {fileID: 1498125364}
   m_Father: {fileID: 2081915354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &852737934
@@ -5371,7 +5457,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 1be7e8d4b610e1c4da5892ea89db82fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6645,8 +6731,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0095825, y: -0.0011597}
-  m_SizeDelta: {x: 1918.9, y: 1080.6}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2048, y: 2048}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075814948
 MonoBehaviour:
@@ -9373,11 +9459,11 @@ Transform:
   m_GameObject: {fileID: 1498125363}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.91251796, w: -0.40903682}
-  m_LocalPosition: {x: 0.191, y: -0.002, z: 0}
-  m_LocalScale: {x: 0.1009336, y: 0.1009336, z: 0.1009336}
+  m_LocalPosition: {x: 1.91, y: -0.019999743, z: 0}
+  m_LocalScale: {x: 1.009336, y: 1.009336, z: 1.009336}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2081915354}
+  m_Father: {fileID: 852737933}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 228.289}
 --- !u!212 &1498125365
 SpriteRenderer:
@@ -11410,11 +11496,11 @@ Transform:
   m_GameObject: {fileID: 1968781613}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.93397754, w: 0.35733193}
-  m_LocalPosition: {x: -0.195, y: -0.011, z: 0}
-  m_LocalScale: {x: 0.111150555, y: 0.111150555, z: 0.111150555}
+  m_LocalPosition: {x: -1.9499999, y: -0.11000037, z: 0}
+  m_LocalScale: {x: 1.1115055, y: 1.1115055, z: 1.1115055}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2081915354}
+  m_Father: {fileID: 852737933}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 138.127}
 --- !u!212 &1968781615
 SpriteRenderer:
@@ -12632,8 +12718,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 852737933}
-  - {fileID: 1968781614}
-  - {fileID: 1498125364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2081915355
@@ -13186,7 +13270,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b28c335cf8d4b4472b70bd6af4318427, type: 2}
   enemySpawner: {fileID: 1744736688}
   enemyManager: {fileID: 649241670}
-  bossEntrance: {fileID: 0}
+  bossEntrance: {fileID: 253464498}
 --- !u!1 &2100121570
 GameObject:
   m_ObjectHideFlags: 0
@@ -13719,8 +13803,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicSource: {fileID: 0}
   sfxSource: {fileID: 0}
-  musicVolume: 0.35
-  sfxVolume: 0.85
+  musicVolume: 0.65
+  sfxVolume: 0.35
   gameTheme: {fileID: 8300000, guid: aa98bec755bd9494ba3eeb6a4904f85a, type: 3}
   spinStartSound: {fileID: 8300000, guid: 152e478a085284a578a1293a0d536b0b, type: 3}
   spinFinishedSound: {fileID: 8300000, guid: f8591b7afbdbe4dd98f176d96f22519b, type: 3}
@@ -13748,3 +13832,4 @@ SceneRoots:
   - {fileID: 967676674}
   - {fileID: 1490289254}
   - {fileID: 309469364}
+  - {fileID: 459447153}

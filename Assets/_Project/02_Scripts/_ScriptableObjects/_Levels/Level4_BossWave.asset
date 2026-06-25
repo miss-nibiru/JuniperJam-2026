@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level4_BossWave
   m_EditorClassIdentifier: Assembly-CSharp::LevelWaveData
   levelName: Level 4 - Boss
-  waveTime: 200
+  waveTime: 300
   enemyGroups:
   - {fileID: 11400000, guid: 7860acc16f2ac47339e0e69e582445d0, type: 2}
   mustClearAllEnemiesToFinish: 0
