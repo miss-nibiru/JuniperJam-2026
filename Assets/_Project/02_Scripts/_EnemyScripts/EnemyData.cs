@@ -34,6 +34,10 @@ public class EnemyData : ScriptableObject
     [SerializeField] private float chaseDelay;
     [SerializeField] private float gridDestroyPadding;
     
+    //healing enemy
+    [SerializeField] private bool healsPlayerWhenKilled;
+    [SerializeField] private int healAmount;
+    
     public string EnemyName => enemyName;
     public GameObject EnemyPrefab => enemyPrefab;
     public int MaxHealth => maxHealth;
@@ -49,5 +53,8 @@ public class EnemyData : ScriptableObject
     public float ChaseDelay => chaseDelay;
     
     public float GridDestroyPadding => gridDestroyPadding;
+    
+    public bool HealsPlayerWhenKilled => healsPlayerWhenKilled;
+    public int HealAmount => healAmount;
 
 }

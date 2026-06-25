@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileData
   projectileName: PurpleBallGoop
   projectilePrefab: {fileID: 4489415941996475654, guid: c6497b6ccefe240218717ae61c0b5de7, type: 3}
-  projectileSpeed: 4
+  projectileSpeed: 3
   projectileDamageAmount: 2
-  projectileHealth: 4
-  projectileLifeTime: 10
+  projectileHealth: 3
+  projectileLifeTime: 6
   canBeShot: 1
   projectileBehaviour: 0

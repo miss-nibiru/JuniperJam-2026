@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour, IHealthBars
     [SerializeField] private MainGridManager mainGrid;
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private Transform playerTargetPoint;
+    [SerializeField] private PlayerHealth playerHealth;
     
     [SerializeField] private BossDeathSequence bossDeathSequence;
 
@@ -98,6 +99,8 @@ public class EnemyController : MonoBehaviour, IHealthBars
         enemyData = enemy;
         mainGrid = grid;
         playerTargetPoint = playerTarget;
+
+        if (!playerHealth && playerTargetPoint) playerHealth = playerTargetPoint.GetComponent<PlayerHealth>();
         _startPosition = transform.position;
         
         _currentHealth = enemyData.MaxHealth;
@@ -107,11 +110,7 @@ public class EnemyController : MonoBehaviour, IHealthBars
 
         if (enemyData.MovementType == EnemyData.EnemyMovementType.Chase)
         {
-            if (_movementRoutine != null)
-            {
-                StopCoroutine(_movementRoutine);
-            }
-
+            if (_movementRoutine != null) StopCoroutine(_movementRoutine);
             _movementRoutine = StartCoroutine(SpawnThenChase());
         }
     }
@@ -197,9 +196,18 @@ public class EnemyController : MonoBehaviour, IHealthBars
         HealthChanged?.Invoke(_currentHealth, MaxHealth);
         if (_currentHealth <= 0)
         {
-            //death animation here
+            HealPlayerOnDeath();
             DieBish();
         }
+    }
+    
+    private void HealPlayerOnDeath()
+    {
+        if (!enemyData) return;
+        if (!enemyData.HealsPlayerWhenKilled) return;
+        if (!playerHealth) return;
+
+        playerHealth.Heal(enemyData.HealAmount);
     }
 
     private void DieBish()
