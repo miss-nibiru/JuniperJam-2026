@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour, IHealthBars
             ChasePlayer();
         }
 
-        if (EnemyData.MovementType == EnemyData.EnemyMovementType.LeftRight)
+        if (EnemyData.MovementType == EnemyData.EnemyMovementType.LeftRight || EnemyData.MovementType == EnemyData.EnemyMovementType.Boss)
         {
 
             MoveLeftRight();

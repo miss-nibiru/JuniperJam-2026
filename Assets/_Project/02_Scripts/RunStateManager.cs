@@ -62,9 +62,12 @@ public class RunStateManager : MonoBehaviour
     {
         cursorManager?.SetShootingCursorEnabled(enabled);
         gunController?.SetShootingEnabled(enabled);
-        if(!enabled) enemyManager?.
-            RemoveAllEnemies();
+        if (!enabled)
+        {
+            enemyManager?.RemoveAllEnemies();
             ClearEnemyProjectiles();
+        }
+        
     }
     
     private void HandleSpinFinished(SpinningWheel.WeaponChoice weaponChoice)
