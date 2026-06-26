@@ -19,5 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4af79eab14c844789b74593fba44ec3b, type: 2}
   - {fileID: 11400000, guid: 663fcffba15ef48f2a253a0facd47c21, type: 2}
   mustClearAllEnemiesToFinish: 0
-  hasBossEntrance: 1
+  hasBossEntrance: 0
   spawnDelay: 0.7
