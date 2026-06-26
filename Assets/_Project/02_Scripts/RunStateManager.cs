@@ -130,6 +130,11 @@ public class RunStateManager : MonoBehaviour
         GetUIManager()?.ShowSpinPanel(enabled);
     }
 
+    public void ResetSpinWheel()
+    {
+        spinningWheel?.ResetSpin();
+    }
+
     public void ShowGameOverPanel(bool enabled)
     {
         GetUIManager().ShowDeadCanvas(enabled);

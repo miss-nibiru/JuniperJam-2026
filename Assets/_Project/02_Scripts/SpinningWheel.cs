@@ -14,6 +14,7 @@ public class SpinningWheel : MonoBehaviour
     
     public event Action<WeaponChoice> SpinFinished;
 
+    private bool canSpin = true;
     private bool inSpin;
     private bool hasStartedSpinning;
 
@@ -33,7 +34,7 @@ public class SpinningWheel : MonoBehaviour
 
     public WeaponChoice weaponChoiceWon = WeaponChoice.None;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         //angleSpacingBetweenEachWeapon = 360 / numberOfWeapons;
@@ -66,12 +67,27 @@ public class SpinningWheel : MonoBehaviour
 
     public void Spin()
     {
-        if (!inSpin)
+        if (!canSpin || inSpin)
         {
-            rb.angularVelocity = rotatePower * UnityEngine.Random.Range(1f, 2f);
-            hasStartedSpinning = false;
-            inSpin = true;
-            AudioManager.Instance?.PlaySpinStart();
+            return;
+        }
+
+        canSpin = false;
+        rb.angularVelocity = rotatePower * UnityEngine.Random.Range(1f, 2f);
+        hasStartedSpinning = false;
+        inSpin = true;
+        AudioManager.Instance?.PlaySpinStart();
+    }
+
+    public void ResetSpin()
+    {
+        canSpin = true;
+        inSpin = false;
+        hasStartedSpinning = false;
+
+        if (rb)
+        {
+            rb.angularVelocity = 0f;
         }
     }
 
