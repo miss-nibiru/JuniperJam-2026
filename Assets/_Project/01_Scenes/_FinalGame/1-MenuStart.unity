@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 184786391}
   - component: {fileID: 184786390}
   m_Layer: 5
-  m_Name: PlayAgainButton
+  m_Name: StartGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -712,7 +712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start Game
+  m_text: The hover on this button is weird, can't figure it out
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 28204c8cdd03eb44e8867ff3da01c2d2, type: 2}
   m_sharedMaterial: {fileID: -2216030047527767416, guid: 28204c8cdd03eb44e8867ff3da01c2d2, type: 2}
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed604a433a721664f96fa50bda1d7ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameButtonActions
-  gameSceneName: AllanScene
+  gameSceneName: 2_Gameplay
   creditsPanel: {fileID: 0}
   winPanel: {fileID: 0}
 --- !u!1 &1068393014
@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I wanna shoo
+  m_text: So this one starts the game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 28204c8cdd03eb44e8867ff3da01c2d2, type: 2}
   m_sharedMaterial: {fileID: -2216030047527767416, guid: 28204c8cdd03eb44e8867ff3da01c2d2, type: 2}
@@ -1523,7 +1523,7 @@ GameObject:
   - component: {fileID: 1873642807}
   - component: {fileID: 1873642806}
   m_Layer: 5
-  m_Name: QuitGameButton
+  m_Name: StartGameNow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1615,7 +1615,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 480740358}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

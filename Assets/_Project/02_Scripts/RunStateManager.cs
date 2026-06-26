@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 /// <summary>
 /// this guy controls the entire game!
 /// </summary>
@@ -16,6 +18,7 @@ public class RunStateManager : MonoBehaviour
     [SerializeField] private CursorManager cursorManager;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private EnemyManager enemyManager;
+    [SerializeField] private WeaponAnnouncer weaponAnnouncementUI;
 
     public GunController gunController;
 
@@ -72,7 +75,17 @@ public class RunStateManager : MonoBehaviour
     
     private void HandleSpinFinished(SpinningWheel.WeaponChoice weaponChoice)
     {
+        // gunController?.SelectWeapon(weaponChoice);
+        // SwitchState(CombatRunState);
+        // if (levelStateMachine) levelStateMachine.StartNewLevel();
+        StartCoroutine(WeaponSelectedRoutine(weaponChoice));
+
+    }
+    private IEnumerator WeaponSelectedRoutine(SpinningWheel.WeaponChoice weaponChoice)
+    {
         gunController?.SelectWeapon(weaponChoice);
+        AudioManager.Instance?.PlayWeaponAnnouncement(weaponChoice); //play the announcement souund here when is connected
+        if (weaponAnnouncementUI) yield return StartCoroutine(weaponAnnouncementUI.PlayAnnouncement(weaponChoice));
         SwitchState(CombatRunState);
         if (levelStateMachine) levelStateMachine.StartNewLevel();
         

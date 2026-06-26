@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource bossMusicSource;
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource announcerSource;
 
     [SerializeField] private float musicVolume;
     [SerializeField] private float sfxVolume;
@@ -22,9 +23,18 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip spinStartSound;
     [SerializeField] private AudioClip spinFinishedSound;
 
+    [Header("Weapon SFXs")]
     [SerializeField] private AudioClip[] shotgunSounds;
     [SerializeField] private AudioClip[] machineGunSounds;
     [SerializeField] private AudioClip[] singleShotSounds;
+    
+    [Header("Weapon Announcer")]
+    [SerializeField] private AudioClip[] shotgunAnnouncementSounds;
+    [SerializeField] private AudioClip[] machineGunAnnouncementSounds;
+    [SerializeField] private AudioClip[] piercingShotAnnouncementSounds;
+    [SerializeField] private float announcerVolumeMultiplier = 1.5f;
+    
+    [Header("Misc Sounds")]
 
     private Coroutine _musicFadeRoutine;
     
@@ -41,6 +51,11 @@ public class AudioManager : MonoBehaviour
         if (!musicSource) musicSource = gameObject.AddComponent<AudioSource>();
         if (!bossMusicSource || bossMusicSource == musicSource) bossMusicSource = gameObject.AddComponent<AudioSource>();
         if (!sfxSource || sfxSource == musicSource || sfxSource == bossMusicSource) sfxSource = gameObject.AddComponent<AudioSource>();
+        if (!announcerSource || announcerSource == musicSource || announcerSource == bossMusicSource || announcerSource == sfxSource) announcerSource = gameObject.AddComponent<AudioSource>();
+        
+        announcerSource.playOnAwake = false;
+        announcerSource.loop = false;
+        announcerSource.volume = sfxVolume;
         
         musicSource.playOnAwake = false;
         musicSource.loop = true;
@@ -85,6 +100,22 @@ public class AudioManager : MonoBehaviour
             PlayRandomSound(singleShotSounds);
         }
     }
+    
+    public void PlayWeaponAnnouncement(SpinningWheel.WeaponChoice weaponChoice)
+    {
+        if (weaponChoice == SpinningWheel.WeaponChoice.Shotgun)
+        {
+            PlayRandomAnnouncementSound(shotgunAnnouncementSounds);
+        }
+        else if (weaponChoice == SpinningWheel.WeaponChoice.MachineGun)
+        {
+            PlayRandomAnnouncementSound(machineGunAnnouncementSounds);
+        }
+        else if (weaponChoice == SpinningWheel.WeaponChoice.SingleShotShotgun)
+        {
+            PlayRandomAnnouncementSound(piercingShotAnnouncementSounds);
+        }
+    }
 
     private void PlayMusic(AudioClip clip)
     {
@@ -117,6 +148,19 @@ public class AudioManager : MonoBehaviour
         sfxSource.clip = clip;
         sfxSource.volume = sfxVolume * volumeMultiplier;
         sfxSource.Play();
+    }
+    
+    private void PlayRandomAnnouncementSound(AudioClip[] clips)
+    {
+        AudioClip clip = GetRandomClip(clips);
+
+        if (!clip) return;
+        if (!announcerSource) return;
+
+        announcerSource.Stop();
+        announcerSource.clip = clip;
+        announcerSource.volume = Mathf.Clamp01(sfxVolume * announcerVolumeMultiplier);
+        announcerSource.Play();
     }
     
     public void FadeGameMusicForBossIntro()
