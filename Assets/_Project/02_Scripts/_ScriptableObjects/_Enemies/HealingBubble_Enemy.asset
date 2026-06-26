@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: HealingBubble
   enemyPrefab: {fileID: 8969623715672447508, guid: cb5ec3a0f5ff1408d8bc88a64f9a9fe9, type: 3}
-  maxHealth: 1
+  maxHealth: 5
   damageAmount: 0
   moveSpeed: 5
   leftRightDistance: 20
