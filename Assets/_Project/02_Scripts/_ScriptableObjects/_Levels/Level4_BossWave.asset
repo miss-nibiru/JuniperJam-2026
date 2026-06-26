@@ -17,6 +17,7 @@ MonoBehaviour:
   enemyGroups:
   - {fileID: 11400000, guid: 7860acc16f2ac47339e0e69e582445d0, type: 2}
   - {fileID: 11400000, guid: 5839819351f624ffdbed0cc415ccfc1c, type: 2}
+  - {fileID: 11400000, guid: b5f5d47019d9b4d7b8068f68ed5c550e, type: 2}
   mustClearAllEnemiesToFinish: 0
   hasBossEntrance: 1
-  spawnDelay: 1
+  spawnDelay: 1.5

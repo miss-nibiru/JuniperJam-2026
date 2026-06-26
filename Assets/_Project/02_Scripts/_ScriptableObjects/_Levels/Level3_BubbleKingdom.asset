@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d353836e0ccc64ee19ca44c5c7209a82, type: 3}
   m_Name: Level3_BubbleKingdom
   m_EditorClassIdentifier: Assembly-CSharp::LevelWaveData
-  levelName: Level 3 - Bubble Kingdom
+  levelName: Level 3 - VoidKingdom
   waveTime: 45
   enemyGroups:
   - {fileID: 11400000, guid: 4af79eab14c844789b74593fba44ec3b, type: 2}
   - {fileID: 11400000, guid: 7860acc16f2ac47339e0e69e582445d0, type: 2}
-  - {fileID: 11400000, guid: 663fcffba15ef48f2a253a0facd47c21, type: 2}
   - {fileID: 11400000, guid: 90af8277cd61349429cc86ade20fb71a, type: 2}
   - {fileID: 11400000, guid: 5839819351f624ffdbed0cc415ccfc1c, type: 2}
   - {fileID: 11400000, guid: b5f5d47019d9b4d7b8068f68ed5c550e, type: 2}

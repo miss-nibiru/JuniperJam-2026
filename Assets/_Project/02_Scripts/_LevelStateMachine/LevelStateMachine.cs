@@ -22,6 +22,7 @@ public class LevelStateMachine : MonoBehaviour
     public event Action LevelComplete;
     public event Action AllLevelsComplete;
     public event Action<float, float> LevelTimerUpdated;
+    public event Action<int> LevelStarted;
 
     private void Start()
     {
@@ -52,7 +53,7 @@ public class LevelStateMachine : MonoBehaviour
         }
         
         LevelWaveData currentLevel = levels[_currentLevelIndex];
-        Debug.Log("Starting level: " + currentLevel.LevelName);
+        LevelStarted?.Invoke(_currentLevelIndex); //when a level start the background system will recieve what level it is - each background is connected depending ont he level
 
         if (currentLevel.HasBossEntrance && bossEntrance)
         {
