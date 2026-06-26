@@ -16096,6 +16096,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
   runStateManager: {fileID: 656271722}
+  cameraShake: {fileID: 1376579401}
+  shakeDuration: 0.175
+  cameraShakeStrength: 0.09
 --- !u!70 &2081915364
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
