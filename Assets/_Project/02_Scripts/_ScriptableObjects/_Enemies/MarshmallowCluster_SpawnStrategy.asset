@@ -27,7 +27,7 @@ MonoBehaviour:
   groupHorizontalSpeed: 0
   groupAdvanceSpeed: 0
   amountToSpawn: 200
-  enemiesPerPattern: 6
+  enemiesPerPattern: 5
   patternSpacing: 2.5
   maxActiveOfType: 100
   delayBetweenSpawns: 1
