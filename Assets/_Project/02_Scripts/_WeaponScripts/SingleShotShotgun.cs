@@ -6,9 +6,11 @@ public class SingleShotShotgun : GunBase
     private Vector2 aimDirection;
     private float aimAngle;
 
+    [SerializeField] private GameObject shootPoint;
+
     public override void Shoot(GameObject bulletPrefab)
     {
-        Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0f, 0f, aimAngle));
+        Instantiate(bulletPrefab, shootPoint.transform.position, Quaternion.Euler(0f, 0f, aimAngle));
     }
 
     private void Update()

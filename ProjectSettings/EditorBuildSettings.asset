@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/01_Scenes/1-MenuStart.unity
+    path: Assets/_Project/01_Scenes/_FinalGame/1-MenuStart.unity
     guid: 585ea8500f4934c94a2762963f74a16c
   - enabled: 1
     path: Assets/_Project/01_Scenes/AllanScene.unity

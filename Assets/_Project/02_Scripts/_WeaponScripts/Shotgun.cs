@@ -8,6 +8,8 @@ public class Shotgun : GunBase
 
     [SerializeField] private float coneAngle;
 
+    [SerializeField] private GameObject shootPoint;
+
     private Vector2 aimDirection;
 
     private float angleSpacingBetweenEachBullet;
@@ -23,7 +25,7 @@ public class Shotgun : GunBase
         for (int i = 0; i < numberOfBulletsPerShot; i++)
         {
             Instantiate(bulletPrefab,
-                transform.position + new Vector3(firstBulletDistance + (i * positionSpacingBetweenEachBullet), 0f, 0f),
+                shootPoint.transform.position + new Vector3(firstBulletDistance + (i * positionSpacingBetweenEachBullet), 0f, 0f),
                 Quaternion.Euler(0f, 0f, firstBulletAngle + i * angleSpacingBetweenEachBullet + aimAngle));
         }
     }
