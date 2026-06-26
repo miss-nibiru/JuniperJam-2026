@@ -177,7 +177,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 6943ef0efcae1874d82e758e2c736eca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -433,6 +433,13 @@ MonoBehaviour:
   mainGrid: {fileID: 0}
   enemyData: {fileID: 11400000, guid: f74b95242caa6430d921572cb89b77d4, type: 2}
   playerTargetPoint: {fileID: 0}
+  playerHealth: {fileID: 0}
+  bossDeathSequence: {fileID: 0}
+  enemyAnimator: {fileID: 0}
+  deathTriggerName: Death
+  deathDestroyBuffer: 0.05
+  enemySpriteRenderer: {fileID: 9113278737557883885}
+  flashDuration: 0.15
 --- !u!50 &5915854646191786471
 Rigidbody2D:
   serializedVersion: 5

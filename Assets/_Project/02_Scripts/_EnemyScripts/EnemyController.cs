@@ -16,6 +16,13 @@ public class EnemyController : MonoBehaviour, IHealthBars
     [SerializeField] private Animator enemyAnimator;
     [SerializeField] private string deathTriggerName = "Death";
     [SerializeField] private float deathDestroyBuffer = 0.05f;
+    [SerializeField] private SpriteRenderer enemySpriteRenderer;
+    [SerializeField] private float flashDuration = 0.15f;
+    [SerializeField] private float flashStrength = 1f;
+    
+    private Material propertyMaterial;
+    
+    private static readonly int FlashAmountProp = Shader.PropertyToID("_FlashAmount");
 
     private bool _canChase;
     private Coroutine _movementRoutine;
@@ -25,7 +32,7 @@ public class EnemyController : MonoBehaviour, IHealthBars
     
     private int _currentHealth;
     private bool _isDying;
-    
+
     // interface stuff
     public int CurrentHealth => _currentHealth;
     public int MaxHealth => enemyData ? enemyData.MaxHealth : 0;
@@ -43,6 +50,12 @@ public class EnemyController : MonoBehaviour, IHealthBars
     private void Start()
     {
         if(enemyData) _currentHealth = enemyData.MaxHealth;
+
+        if(enemySpriteRenderer != null)
+        {
+            propertyMaterial = enemySpriteRenderer.material;
+        }
+        
     }
 
     void Update()
@@ -200,6 +213,7 @@ public class EnemyController : MonoBehaviour, IHealthBars
     public void TakeDamage(int damageAmount)
     {
         if (_isDying) return;
+        StartCoroutine(DamageFlash());
         _currentHealth -= damageAmount;
         _currentHealth = Mathf.Clamp(_currentHealth,0,MaxHealth);
         HealthChanged?.Invoke(_currentHealth, MaxHealth);
@@ -305,5 +319,14 @@ public class EnemyController : MonoBehaviour, IHealthBars
             if (!healthBar) continue;
             healthBar.gameObject.SetActive(false);
         }
+    }
+
+    private IEnumerator DamageFlash()
+    {
+        propertyMaterial.SetFloat(FlashAmountProp, flashStrength);
+
+        yield return new WaitForSeconds(flashDuration);
+
+        propertyMaterial.SetFloat(FlashAmountProp, 0f);
     }
 }

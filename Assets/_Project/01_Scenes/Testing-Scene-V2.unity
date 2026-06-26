@@ -2047,7 +2047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &273476834
 SpriteRenderer:
   serializedVersion: 2
@@ -2254,7 +2254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &310022165
 SpriteRenderer:
   serializedVersion: 2
@@ -11672,7 +11672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1490289253
 SpriteRenderer:
   serializedVersion: 2
@@ -13380,6 +13380,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715989514}
   m_CullTransparentMesh: 1
+--- !u!212 &1723262498 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8480602185278946001, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+  m_PrefabInstance: {fileID: 1954358324}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1727580227
 GameObject:
   m_ObjectHideFlags: 0
@@ -14472,9 +14477,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 52753044}
     - target: {fileID: 2478565666856434545, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: flashStrength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478565666856434545, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
       propertyPath: playerTargetPoint
       value: 
       objectReference: {fileID: 2081915354}
+    - target: {fileID: 2478565666856434545, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: enemySpriteRenderer
+      value: 
+      objectReference: {fileID: 1723262498}
     - target: {fileID: 2600290427861386737, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14539,6 +14552,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8480602185278946001, guid: 7e4950a3f989c43fcb9ed0c19b89f245, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6943ef0efcae1874d82e758e2c736eca, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
