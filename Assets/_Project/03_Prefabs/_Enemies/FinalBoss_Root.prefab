@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3466616629540797834}
   - component: {fileID: 13947970706445050}
+  - component: {fileID: 2151386449310605559}
   m_Layer: 0
-  m_Name: EyeHitSpot
+  m_Name: EyeHitSpot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362489084755660873}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 2.76, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.027999999, y: 2.45, z: 0}
+  m_LocalScale: {x: 0.055999998, y: 0.055999998, z: 0.055999998}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6119519087214019655}
+  m_Father: {fileID: 4553898251252360672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &13947970706445050
 SpriteRenderer:
@@ -55,7 +56,7 @@ SpriteRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 200
+  m_SortingOrder: 1000
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 81796d367150543db887b012b1b1c45a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -91,6 +92,23 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2151386449310605559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362489084755660873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2ddf1a13a0b42ceb22bb804f0bfe5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossEyeHitFeedback
+  eyeSprite: {fileID: 13947970706445050}
+  normalColor: {r: 1, g: 1, b: 1, a: 0}
+  flashColor: {r: 0.8584906, g: 0.14173192, b: 0.8298223, a: 0}
+  flashTime: 0.12
+  pulseScale: 1.25
 --- !u!1 &764940250575931106
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,8 +119,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3498729221452124401}
   - component: {fileID: 9222804258452488080}
+  - component: {fileID: 7535577834382843695}
   m_Layer: 0
-  m_Name: EyeHitSpot
+  m_Name: EyeHitSpot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,11 +136,11 @@ Transform:
   m_GameObject: {fileID: 764940250575931106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26, y: 2.19, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_LocalPosition: {x: -2.9919999, y: 3.3460002, z: 0}
+  m_LocalScale: {x: 0.056, y: 0.056, z: 0.056}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 7365614758790194707}
+  m_Father: {fileID: 4553898251252360672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9222804258452488080
 SpriteRenderer:
@@ -170,7 +189,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 200
+  m_SortingOrder: 1000
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 81796d367150543db887b012b1b1c45a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -182,6 +201,23 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &7535577834382843695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764940250575931106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2ddf1a13a0b42ceb22bb804f0bfe5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossEyeHitFeedback
+  eyeSprite: {fileID: 9222804258452488080}
+  normalColor: {r: 1, g: 1, b: 1, a: 0}
+  flashColor: {r: 0.8584906, g: 0.14173192, b: 0.8298223, a: 0}
+  flashTime: 0.12
+  pulseScale: 1.25
 --- !u!1 &1076598095563121207
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,8 +279,7 @@ Transform:
   m_LocalPosition: {x: 3.25, y: 1.74, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 2120679167449736410}
+  m_Children: []
   m_Father: {fileID: 7031642879156606981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &536635572273447246
@@ -260,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHitBox
   enemyController: {fileID: 1992121987057256725}
+  hitEye: {fileID: 4339857128006361784}
 --- !u!58 &202858135893549007
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -505,8 +541,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.624, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 3466616629540797834}
+  m_Children: []
   m_Father: {fileID: 7031642879156606981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1342276506430541391
@@ -522,6 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHitBox
   enemyController: {fileID: 1992121987057256725}
+  hitEye: {fileID: 2151386449310605559}
 --- !u!58 &2451526918467162438
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -588,6 +624,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2076084279861079760}
+  - {fileID: 3466616629540797834}
+  - {fileID: 3498729221452124401}
+  - {fileID: 2120679167449736410}
   m_Father: {fileID: 8325048500298522653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4967268707805927273
@@ -651,8 +690,7 @@ Transform:
   m_LocalPosition: {x: -3.2, y: 1.7, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 3498729221452124401}
+  m_Children: []
   m_Father: {fileID: 7031642879156606981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2623283086237213804
@@ -668,6 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHitBox
   enemyController: {fileID: 1992121987057256725}
+  hitEye: {fileID: 7535577834382843695}
 --- !u!58 &2450506861183096131
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -714,8 +753,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2120679167449736410}
   - component: {fileID: 1244558873483348613}
+  - component: {fileID: 4339857128006361784}
   m_Layer: 0
-  m_Name: EyeHitSpot
+  m_Name: EyeHitSpot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -730,11 +770,11 @@ Transform:
   m_GameObject: {fileID: 7574567669903384256}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35, y: 2.18, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_LocalPosition: {x: 2.97, y: 3.3780005, z: 0}
+  m_LocalScale: {x: 0.056, y: 0.056, z: 0.056}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 3910410363953451212}
+  m_Father: {fileID: 4553898251252360672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1244558873483348613
 SpriteRenderer:
@@ -783,7 +823,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 200
+  m_SortingOrder: 1000
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 81796d367150543db887b012b1b1c45a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -795,6 +835,23 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &4339857128006361784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7574567669903384256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2ddf1a13a0b42ceb22bb804f0bfe5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossEyeHitFeedback
+  eyeSprite: {fileID: 1244558873483348613}
+  normalColor: {r: 1, g: 1, b: 1, a: 0}
+  flashColor: {r: 0.8584906, g: 0.14173192, b: 0.8298223, a: 0}
+  flashTime: 0.12
+  pulseScale: 1.25
 --- !u!1 &7760822068000230341
 GameObject:
   m_ObjectHideFlags: 0

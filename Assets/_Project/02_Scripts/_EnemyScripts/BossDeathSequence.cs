@@ -27,6 +27,9 @@ public class BossDeathSequence : MonoBehaviour
     [Header("Boss Parts")]
     [SerializeField] private Collider2D[] bossHitboxes;
     [SerializeField] private EnemyShooterController[] bossShooters;
+    
+    [Header("UI")]
+    [SerializeField] private BossHealthBarUI bossHealthBarUI;
 
     private bool _deathStarted;
 
@@ -40,6 +43,7 @@ public class BossDeathSequence : MonoBehaviour
         if (!sfxSource) sfxSource = gameObject.AddComponent<AudioSource>();
         if (bossHitboxes == null || bossHitboxes.Length == 0) bossHitboxes = GetComponentsInChildren<Collider2D>(true);
         if (bossShooters == null || bossShooters.Length == 0) bossShooters = GetComponentsInChildren<EnemyShooterController>(true);
+        if (!bossHealthBarUI) bossHealthBarUI = FindFirstObjectByType<BossHealthBarUI>();
         
     }
 
@@ -53,15 +57,12 @@ public class BossDeathSequence : MonoBehaviour
     private IEnumerator DeathSequenceRoutine()
     {
         StopBossGameplay();
-
         yield return StartCoroutine(ShakeCameraAndBoss());
-
         PlayDeathYell();
-
         PlayDeathAnimation();
-
         yield return new WaitForSeconds(destroyDelay);
 
+        if (bossHealthBarUI) bossHealthBarUI.Hide();
         Destroy(gameObject);
     }
 

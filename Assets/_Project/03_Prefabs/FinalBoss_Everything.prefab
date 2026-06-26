@@ -147,7 +147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5404482092837802178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -544,10 +544,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2600290427861386737}
     m_Modifications:
+    - target: {fileID: 536635572273447246, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: hitEye
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076598095563121207, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1342276506430541391, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: hitEye
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585180139735772904, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6100001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585180139735772904, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992121987057256725, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: enemyAnimator
+      value: 
+      objectReference: {fileID: 4245438074363599614}
     - target: {fileID: 1992121987057256725, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
       propertyPath: bossDeathSequence
       value: 
       objectReference: {fileID: 6618406784618129880}
+    - target: {fileID: 2008813238314938312, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008813238314938312, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.84
+      objectReference: {fileID: 0}
     - target: {fileID: 2263286626589371121, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -555,6 +587,62 @@ PrefabInstance:
     - target: {fileID: 2263286626589371121, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2623283086237213804, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: hitEye
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032432937208677919, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3769360802114939026, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3910410363953451212, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910410363953451212, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4528919261103312624, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 4967268707805927273, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 6119519087214019655, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119519087214019655, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.814
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271347709650703449, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 6894896064149198780, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6894896064149198780, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365614758790194707, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365614758790194707, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.09
       objectReference: {fileID: 0}
     - target: {fileID: 8325048500298522653, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
       propertyPath: m_LocalScale.x
@@ -617,7 +705,10 @@ PrefabInstance:
       value: FinalBoss_Root
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7574567669903384256, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+    - {fileID: 764940250575931106, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
+    - {fileID: 362489084755660873, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8846461366675831921, guid: c76875c122d6f436c8b9f948d65ca19a, type: 3}
@@ -670,6 +761,7 @@ MonoBehaviour:
   bossShakeStrength: 0.06
   bossHitboxes: []
   bossShooters: []
+  bossHealthBarUI: {fileID: 0}
 --- !u!95 &4245438074363599614
 Animator:
   serializedVersion: 7
