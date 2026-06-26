@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(PlayerMove))]
+[RequireComponent(typeof(PlayerHealth))]
 public class MoveAbilityDash : MoveAbility
 {
     [SerializeField] private float dashDuration;
@@ -9,6 +10,7 @@ public class MoveAbilityDash : MoveAbility
     [SerializeField] private string dashAnimationTrigger;
 
     private Rigidbody2D rb;
+    private PlayerHealth playerHealth;
     private Animator playerAnimator;
     private SpriteRenderer playerSpriteRenderer;
     private Sprite restingSprite;
@@ -16,6 +18,7 @@ public class MoveAbilityDash : MoveAbility
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerHealth = GetComponent<PlayerHealth>();
         playerAnimator = GetComponentInChildren<Animator>();
 
         if (playerAnimator)
@@ -29,10 +32,22 @@ public class MoveAbilityDash : MoveAbility
 
     public override IEnumerator UseMoveAbility(PlayerMove playerMove, Vector2 direction)
     {
+        SetDashInvulnerable(true);
         PlayDashAnimation();
         rb.AddForce(direction * dashForce);
         yield return new WaitForSeconds(dashDuration);
         StopDashAnimation();
+        SetDashInvulnerable(false);
+    }
+
+    private void OnDisable()
+    {
+        SetDashInvulnerable(false);
+    }
+
+    private void SetDashInvulnerable(bool isInvulnerable)
+    {
+        if (playerHealth) playerHealth.SetInvulnerable(isInvulnerable);
     }
 
     private void PlayDashAnimation()

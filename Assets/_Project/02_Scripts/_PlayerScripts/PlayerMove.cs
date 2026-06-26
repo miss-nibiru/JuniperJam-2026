@@ -42,7 +42,7 @@ public class PlayerMove : MonoBehaviour
 
     public void OnAbilityMove(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && moveState == MoveState.Move)
         {
             StartCoroutine(PerformMoveAbility());
         }

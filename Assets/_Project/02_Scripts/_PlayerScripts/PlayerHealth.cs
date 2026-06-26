@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using System.Collections;
 
@@ -14,14 +13,16 @@ public class PlayerHealth : MonoBehaviour, IHealthBars
 
     private int _currentHealth;
     private bool _isDead;
+    private bool _isInvulnerable;
 
     public int CurrentHealth => _currentHealth;
     public int MaxHealth => maxHealth;
+    public bool IsInvulnerable => _isInvulnerable;
     public event Action<int, int> HealthChanged; // from the interface 
 
     void Awake()
     {
-        if(!runStateManager) runStateManager = FindObjectOfType<RunStateManager>();
+        if(!runStateManager) runStateManager = FindFirstObjectByType<RunStateManager>();
     }
 
     private void Start()
@@ -36,6 +37,7 @@ public class PlayerHealth : MonoBehaviour, IHealthBars
     public void TakeDamage(int damageAmount)
     {
         if(_isDead) return;
+        if(_isInvulnerable) return;
 
         StartCoroutine(ShakeCamera());
         _currentHealth -= damageAmount;
@@ -46,6 +48,11 @@ public class PlayerHealth : MonoBehaviour, IHealthBars
         {
             Die();
         }
+    }
+
+    public void SetInvulnerable(bool isInvulnerable)
+    {
+        _isInvulnerable = isInvulnerable;
     }
     
     //Player can also heal now!
@@ -93,5 +100,6 @@ public class PlayerHealth : MonoBehaviour, IHealthBars
             yield return null;
         }
 
-        if (cameraShake) cameraShake.localPosition = originalCameraPosition;    }
+        if (cameraShake) cameraShake.localPosition = originalCameraPosition;
+    }
 }
