@@ -90,15 +90,15 @@ public class SpinningWheel : MonoBehaviour
 
         if (angleToCheck <= halfAngleSpacing || angleToCheck > 360f - halfAngleSpacing)
         {
-            weaponChoiceWon = WeaponChoice.Shotgun;
+            weaponChoiceWon = WeaponChoice.SingleShotShotgun;
         }
         else if (angleToCheck <= halfAngleSpacing + angleSpacingBetweenEachWeapon)
         {
-            weaponChoiceWon = WeaponChoice.SingleShotShotgun;
+            weaponChoiceWon = WeaponChoice.MachineGun;
         }
         else
         {
-            weaponChoiceWon = WeaponChoice.MachineGun;
+            weaponChoiceWon = WeaponChoice.Shotgun;
         }
 
         Debug.Log($"Angle is {finalAngle} and weapon is {weaponChoiceWon}");
