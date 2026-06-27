@@ -55,7 +55,7 @@ public class AudioManager : MonoBehaviour
         
         announcerSource.playOnAwake = false;
         announcerSource.loop = false;
-        announcerSource.volume = sfxVolume;
+        announcerSource.volume = sfxVolume * 2f;
         
         musicSource.playOnAwake = false;
         musicSource.loop = true;
