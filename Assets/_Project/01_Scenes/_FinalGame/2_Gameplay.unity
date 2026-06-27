@@ -12658,7 +12658,7 @@ MonoBehaviour:
   bossMusicSource: {fileID: 1903302399}
   sfxSource: {fileID: 1417661521}
   announcerSource: {fileID: 0}
-  musicVolume: 0.2
+  musicVolume: 0.15
   sfxVolume: 0.15
   gameTheme: {fileID: 8300000, guid: aa98bec755bd9494ba3eeb6a4904f85a, type: 3}
   bossTheme: {fileID: 8300000, guid: 73025e1d284f040a7acca48000a76628, type: 3}
